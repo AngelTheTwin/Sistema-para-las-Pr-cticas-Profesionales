@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+
+<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/8" fx:controller="gui.controladores.FXML_InicioDeSesionController">
+   <children>
+      <Pane layoutX="109.0" layoutY="47.0" prefHeight="260.0" prefWidth="352.0">
+         <children>
+            <Label fx:id="labelInicioDeSesion" layoutX="135.0" layoutY="22.0" text="Inicio de Sesión" textAlignment="CENTER" />
+            <TextField layoutX="159.0" layoutY="69.0" />
+            <TextField layoutX="159.0" layoutY="124.0" />
+            <Button fx:id="buttonIniciarSesion" layoutX="222.0" layoutY="175.0" mnemonicParsing="false" text="Iniciar Sesión" />
+            <Button fx:id="buttonSalir" layoutX="159.0" layoutY="175.0" mnemonicParsing="false" text="Salir" />
+            <Label fx:id="labelUsuario" layoutX="44.0" layoutY="73.0" text="Usuario" />
+            <Label fx:id="labelContraseña" layoutX="44.0" layoutY="128.0" text="Contraseña" />
+         </children>
+      </Pane>
+   </children>
+</AnchorPane>

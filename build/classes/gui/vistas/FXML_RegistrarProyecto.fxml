@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
+
+<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.controladores.FXML_RegistrarProyectoController">
+   <children>
+      <Pane layoutX="14.0" layoutY="-8.0" prefHeight="394.0" prefWidth="592.0">
+         <children>
+            <TextArea fx:id="textAreaDescripcionProyecto" layoutX="43.0" layoutY="170.0" prefHeight="54.0" prefWidth="200.0" promptText="Descripción del proyecto" />
+            <TextArea fx:id="textAreaRecursosProyecto" layoutX="335.0" layoutY="75.0" prefHeight="54.0" prefWidth="200.0" promptText="Recursos necesarios" />
+            <TextArea fx:id="textAreaObjetivoProyecto" layoutX="43.0" layoutY="265.0" prefHeight="54.0" prefWidth="200.0" promptText="Objetivo del proyecto" />
+            <TextArea fx:id="textAreaMetodologiaProyecto" layoutX="335.0" layoutY="170.0" prefHeight="54.0" prefWidth="200.0" promptText="Metodología del proyecto" />
+            <Button fx:id="buttonRegistrar" layoutX="261.0" layoutY="348.0" mnemonicParsing="false" onAction="#seleccionarRegistrarProyecto" text="Registrar" />
+            <Button fx:id="buttonRegresar" layoutX="43.0" layoutY="33.0" mnemonicParsing="false" text="Regresar" />
+            <Button fx:id="buttonCerrarSesion" layoutX="458.0" layoutY="33.0" mnemonicParsing="false" text="Cerrar Sesion" />
+            <TextArea fx:id="textAreaNombreProyecto" layoutX="43.0" layoutY="75.0" prefHeight="54.0" prefWidth="200.0" promptText="Nombre del Proyecto" />
+            <TextArea fx:id="textAreaDuracionProyecto" layoutX="379.0" layoutY="270.0" prefHeight="44.0" prefWidth="112.0" promptText="Duración (hrs)" />
+         </children>
+      </Pane>
+   </children>
+</AnchorPane>

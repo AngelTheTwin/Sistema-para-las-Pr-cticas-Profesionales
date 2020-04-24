@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
+
+<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.controladores.FXML_EliminarProfesorController">
+   <children>
+      <Pane layoutX="36.0" layoutY="26.0" prefHeight="352.0" prefWidth="531.0">
+         <children>
+            <Button fx:id="buttonCerrarSesion" layoutX="437.0" layoutY="14.0" mnemonicParsing="false" text="Cerrar Sesion" />
+            <Button fx:id="buttonEliminar" layoutX="236.0" layoutY="278.0" mnemonicParsing="false" onAction="#seleccionarBotonEliminar" text="Eliminar" />
+            <TextField fx:id="textFieldNumeroPersonal" layoutX="172.0" layoutY="163.0" prefHeight="26.0" prefWidth="192.0" />
+            <Label fx:id="labelDescripcion" layoutX="83.0" layoutY="81.0" text="Ingrese el número de personal del Profesor que desea eliminar" />
+            <Button fx:id="buttonRegresar" layoutX="14.0" layoutY="18.0" mnemonicParsing="false" text="Regresar" />
+         </children>
+      </Pane>
+   </children>
+</AnchorPane>
