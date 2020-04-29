@@ -37,13 +37,8 @@ public class Documento {
     }
     
     public void documentoABinario(){
-        try {
-            documento = new byte[(int) ruta.length()];
-            InputStream input = new FileInputStream(ruta);
-            input.read(documento);
-            this.setDocumento(documento);
-        } catch (IOException ex) {
-            Logger.getLogger(Documento.class.getName()).log(Level.SEVERE, null, ex);
-        }
+        File archivo = new File(ruta);
+        documento = new byte[(int) archivo.length()];
+        this.setDocumento(documento);
     }
 }
