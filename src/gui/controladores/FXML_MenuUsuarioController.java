@@ -1,12 +1,13 @@
 /*
- * Copyright (C) {2020}
- * Todos los derechos reservados
- * Desarrollado para {Universidad Veracruzana}
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
  */
 package gui.controladores;
 
 import java.io.IOException;
 import java.net.URL;
+import java.sql.SQLException;
 import java.util.ResourceBundle;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -25,29 +26,26 @@ import javafx.stage.Stage;
  *
  * @author dagam
  */
-public class FXML_MenuAdministradorController implements Initializable {
+public class FXML_MenuUsuarioController implements Initializable {
 
     @FXML
-    private Button buttonCerrarSesion;
+    private Button buttonAdministrador;
     @FXML
-    private Button buttonAdministrarProfesor;
+    private Button buttonCoordinador;
     @FXML
-    private Button buttonAdministrarCoordinador;
+    private Button buttonProfesor;
     @FXML
-    private Button buttonAdministrarPracticante;
+    private Button buttonPracticante;
 
-    /**
-     * Initializes the controller class.
-     */
     @Override
-    public void initialize(URL url, ResourceBundle rb) {
-        buttonAdministrarProfesor.setOnAction(new EventHandler<ActionEvent>(){
+    public void initialize(URL location, ResourceBundle resources) {
+        buttonAdministrador.setOnAction(new EventHandler<ActionEvent>(){
             @Override
             public void handle(ActionEvent event) {
                  try{
-                    Stage stagePrincipal = (Stage) buttonAdministrarProfesor.getScene().getWindow();
+                    Stage stagePrincipal = (Stage) buttonAdministrador.getScene().getWindow();
                     stagePrincipal.close();
-                    FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/gui/vistas/FXML_AdministrarProfesor.fxml"));
+                    FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/gui/vistas/FXML_InicioDeSesionAdministrador.fxml"));
                     Parent root1 = (Parent) fxmlLoader.load();
                     Stage stage = new Stage();
                     stage.setResizable(false);
@@ -60,13 +58,13 @@ public class FXML_MenuAdministradorController implements Initializable {
             }  
         });
         
-        buttonAdministrarPracticante.setOnAction(new EventHandler<ActionEvent>(){
+        buttonCoordinador.setOnAction(new EventHandler<ActionEvent>(){
             @Override
             public void handle(ActionEvent event) {
                  try{
-                    Stage stagePrincipal = (Stage) buttonAdministrarPracticante.getScene().getWindow();
+                    Stage stagePrincipal = (Stage) buttonCoordinador.getScene().getWindow();
                     stagePrincipal.close();
-                    FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/gui/vistas/FXML_AdministrarPracticante.fxml"));
+                    FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/gui/vistas/FXML_InicioDeSesionCoordinador.fxml"));
                     Parent root1 = (Parent) fxmlLoader.load();
                     Stage stage = new Stage();
                     stage.setResizable(false);
@@ -78,14 +76,14 @@ public class FXML_MenuAdministradorController implements Initializable {
                 }
             }  
         });
-            
-        buttonAdministrarCoordinador.setOnAction(new EventHandler<ActionEvent>(){
+                
+        buttonProfesor.setOnAction(new EventHandler<ActionEvent>(){
             @Override
             public void handle(ActionEvent event) {
                  try{
-                    Stage stagePrincipal = (Stage) buttonAdministrarCoordinador.getScene().getWindow();
+                    Stage stagePrincipal = (Stage) buttonProfesor.getScene().getWindow();
                     stagePrincipal.close();
-                    FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/gui/vistas/FXML_AdministrarCoordinador.fxml"));
+                    FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/gui/vistas/FXML_InicioDeSesionProfesor.fxml"));
                     Parent root1 = (Parent) fxmlLoader.load();
                     Stage stage = new Stage();
                     stage.setResizable(false);
@@ -96,17 +94,15 @@ public class FXML_MenuAdministradorController implements Initializable {
                     logger.log(Level.SEVERE, "Error al crear ventana.", ex);
                 }
             }  
-        });
-            
-            
+        });   
         
-            buttonCerrarSesion.setOnAction(new EventHandler<ActionEvent>(){
+        buttonPracticante.setOnAction(new EventHandler<ActionEvent>(){
             @Override
             public void handle(ActionEvent event) {
                  try{
-                    Stage stagePrincipal = (Stage) buttonCerrarSesion.getScene().getWindow();
+                    Stage stagePrincipal = (Stage) buttonProfesor.getScene().getWindow();
                     stagePrincipal.close();
-                    FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/gui/vistas/FXML_MenuUsuario.fxml"));
+                    FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/gui/vistas/FXML_InicioDeSesionPracticante.fxml"));
                     Parent root1 = (Parent) fxmlLoader.load();
                     Stage stage = new Stage();
                     stage.setResizable(false);
@@ -118,6 +114,5 @@ public class FXML_MenuAdministradorController implements Initializable {
                 }
             }  
         });
-    }    
-    
+    }
 }

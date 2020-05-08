@@ -20,7 +20,7 @@ public class main extends Application{
     @Override
     public void start(Stage primaryStage) throws Exception {
         FXMLLoader loader = new FXMLLoader();
-        loader.setLocation(main.class.getResource("/gui/vistas/FXML_RegistrarPracticante.fxml"));
+        loader.setLocation(main.class.getResource("/gui/vistas/FXML_MenuUsuario.fxml"));
         Pane ventana = (Pane) loader.load();
 
         Scene escena = new Scene(ventana);

@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.PasswordField?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
+
+<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.controladores.FXML_InicioDeSesionCoordinadorController">
+   <children>
+      <Pane layoutX="109.0" layoutY="47.0" prefHeight="260.0" prefWidth="352.0">
+         <children>
+            <Label fx:id="labelInicioDeSesion" layoutX="135.0" layoutY="22.0" text="Inicio de Sesión Coordinador" textAlignment="CENTER" />
+            <TextField fx:id="textFieldUsuario" layoutX="159.0" layoutY="90.0" />
+            <Button fx:id="buttonIniciarSesion" layoutX="133.0" layoutY="234.0" mnemonicParsing="false" onAction="#validarAccesoCoordinador" text="Iniciar Sesión" />
+            <Button fx:id="buttonSalir" layoutX="13.0" layoutY="18.0" mnemonicParsing="false" text="Regresar" />
+            <Label fx:id="labelUsuario" layoutX="45.0" layoutY="94.0" text="Usuario:" />
+            <Label fx:id="labelContraseña" layoutX="45.0" layoutY="163.0" text="Contraseña:" />
+            <PasswordField fx:id="passwordFieldContraseña" layoutX="159.0" layoutY="159.0" />
+         </children>
+      </Pane>
+   </children>
+</AnchorPane>

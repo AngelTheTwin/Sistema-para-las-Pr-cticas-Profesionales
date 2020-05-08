@@ -20,7 +20,7 @@
             <TextField fx:id="textFieldNombre" layoutX="176.0" layoutY="121.0" prefHeight="25.0" prefWidth="249.0" />
             <TextField fx:id="textFieldApellidoPaterno" layoutX="176.0" layoutY="170.0" prefHeight="25.0" prefWidth="249.0" />
             <TextField fx:id="textFieldApellidoMaterno" layoutX="176.0" layoutY="226.0" prefHeight="25.0" prefWidth="249.0" />
-            <Button fx:id="buttonCerrarSesion" layoutX="399.0" layoutY="7.0" mnemonicParsing="false" text="Cerrar Sesión" />
+            <Button fx:id="buttonCerrarSesion" layoutX="14.0" layoutY="11.0" mnemonicParsing="false" text="Regresar" />
             <Button fx:id="buttonRegistrar" layoutX="113.0" layoutY="286.0" mnemonicParsing="false" onAction="#registrarDatosProfesor" text="Registrar" />
             <Button fx:id="buttonCancelar" layoutX="344.0" layoutY="286.0" mnemonicParsing="false" text="Cancelar" />
             <ComboBox fx:id="comboBoxTurno" layoutX="303.0" layoutY="67.0" prefWidth="150.0" promptText="Turno" />
