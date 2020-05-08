@@ -7,7 +7,6 @@ package datos.daoimpl;
 
 import entidades.Practicante;
 import java.util.List;
-import org.junit.Test;
 import static org.junit.Assert.*;
 
 /**
