@@ -11,10 +11,10 @@
          <children>
             <Button fx:id="buttonCerrarSesion" layoutX="421.0" layoutY="14.0" mnemonicParsing="false" text="Cerrar Sesion" />
             <Button fx:id="buttonRegresar" layoutX="14.0" layoutY="14.0" mnemonicParsing="false" text="Regresar" />
-            <Button fx:id="buttonRegistrarProfesor" layoutX="83.0" layoutY="107.0" mnemonicParsing="false" onAction="#seleccionarRegistrarProfesor" prefHeight="46.0" prefWidth="120.0" text="Registrar Profesor" />
-            <Button fx:id="buttonEliminarProfesor" layoutX="301.0" layoutY="107.0" mnemonicParsing="false" onAction="#seleccionarEliminarProfesor" prefHeight="46.0" prefWidth="120.0" text="Eliminar Profesor" />
-            <Button fx:id="buttonEditarProfesor" layoutX="83.0" layoutY="227.0" mnemonicParsing="false" onAction="#seleccionarEditarProfesor" prefHeight="46.0" prefWidth="120.0" text="Editar Profesor" />
-            <Button fx:id="buttonBuscarProfesor" layoutX="301.0" layoutY="227.0" mnemonicParsing="false" onAction="#seleccionarBuscarProfesor" prefHeight="46.0" prefWidth="120.0" text="Buscar Profesor" />
+            <Button fx:id="buttonRegistrarProfesor" layoutX="75.0" layoutY="107.0" mnemonicParsing="false" prefHeight="46.0" prefWidth="128.0" text="Registrar Profesor" />
+            <Button fx:id="buttonEliminarProfesor" layoutX="301.0" layoutY="107.0" mnemonicParsing="false" prefHeight="46.0" prefWidth="128.0" text="Eliminar Profesor" />
+            <Button fx:id="buttonEditarProfesor" layoutX="75.0" layoutY="227.0" mnemonicParsing="false" prefHeight="46.0" prefWidth="128.0" text="Editar Profesor" />
+            <Button fx:id="buttonBuscarProfesor" layoutX="301.0" layoutY="227.0" mnemonicParsing="false" prefHeight="46.0" prefWidth="128.0" text="Buscar Profesor" />
             <Label layoutX="203.0" layoutY="31.0" text="Administrar Profesor" />
          </children>
       </Pane>

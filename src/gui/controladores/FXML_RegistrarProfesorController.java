@@ -6,7 +6,9 @@
 package gui.controladores;
 
 import datos.daoimpl.ProfesorDaoImpl;
+import datos.daoimpl.UsuarioDaoImpl;
 import entidades.Profesor;
+import entidades.Usuario;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -95,22 +97,23 @@ public class FXML_RegistrarProfesorController implements Initializable {
                 textFieldApellidoMaterno.getText().isEmpty()){
              JOptionPane.showMessageDialog(null, "Favor de llenar todos los campos");
         }else{
-            Profesor profesor = new Profesor();
-            ProfesorDaoImpl profesorDao = new ProfesorDaoImpl();
+            Usuario usuario = new Usuario();
+            UsuarioDaoImpl usuarioDao = new UsuarioDaoImpl();
 
-            profesor.setNumeroPersonalProfesor(textFieldNumeroPersonal.getText());
-            profesor.setNombreProfesor(textFieldNombre.getText());
-            profesor.setApellidoPaternoProfesor(textFieldApellidoPaterno.getText());
-            profesor.setApellidoMaternoProfesor(textFieldApellidoMaterno.getText());
-            profesor.setTurnoProfesor((String) comboBoxTurno.getValue());
-            profesor.setEstadoProfesor("Activo");
+            usuario.setMatricula(textFieldNumeroPersonal.getText());
+            usuario.setNombre(textFieldNombre.getText());
+            usuario.setApellidoPaterno(textFieldApellidoPaterno.getText());
+            usuario.setApellidoMaterno(textFieldApellidoMaterno.getText());
+            usuario.setEstado("Activo");
+            usuario.setTurno((String) comboBoxTurno.getValue());
+            usuario.setTipoUsuario(3);
             
             this.textFieldNumeroPersonal.setText("");
             this.textFieldNombre.setText("");
             this.textFieldApellidoPaterno.setText("");
             this.textFieldApellidoMaterno.setText("");
 
-            profesorDao.saveProfesor(profesor);
+            usuarioDao.saveUsuario(usuario);
         }
     }
 }

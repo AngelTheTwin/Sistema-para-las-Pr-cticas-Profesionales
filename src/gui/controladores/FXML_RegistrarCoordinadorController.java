@@ -6,9 +6,12 @@
 package gui.controladores;
 
 import datos.daoimpl.CoordinadorDaoImpl;
+import datos.daoimpl.UsuarioDaoImpl;
 import entidades.Coordinador;
+import entidades.Usuario;
 import java.io.IOException;
 import java.net.URL;
+import java.security.NoSuchAlgorithmException;
 import java.util.ResourceBundle;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -92,29 +95,30 @@ public class FXML_RegistrarCoordinadorController implements Initializable {
     }
 
     @FXML
-    private void registrarDatosCoordinador(ActionEvent event) {
+    private void registrarDatosCoordinador(ActionEvent event) throws NoSuchAlgorithmException {
         if(textFieldNumeroPersonal.getText().isEmpty() || 
                 textFieldNombre.getText().isEmpty() ||
                 textFieldApellidoPaterno.getText().isEmpty() ||
                 textFieldApellidoMaterno.getText().isEmpty()){
              JOptionPane.showMessageDialog(null, "Favor de llenar todos los campos.");
         }else{
-            Coordinador coordinador = new Coordinador();
-            CoordinadorDaoImpl coordinadorDao = new CoordinadorDaoImpl();
+            Usuario usuario = new Usuario();
+            UsuarioDaoImpl usuarioDao = new UsuarioDaoImpl();
 
-            coordinador.setNumeroPersonalCoordinador(textFieldNumeroPersonal.getText());
-            coordinador.setNombreCoordinador(textFieldNombre.getText());
-            coordinador.setApellidoPaternoCoordinador(textFieldApellidoPaterno.getText());
-            coordinador.setApellidoMaternoCoordinador(textFieldApellidoMaterno.getText());
-            coordinador.setTurnoCoordinador((String) comboBoxTurno.getValue());
-            coordinador.setEstadoCoordinador("Activo");
+            usuario.setMatricula(textFieldNumeroPersonal.getText());
+            usuario.setNombre(textFieldNombre.getText());
+            usuario.setApellidoPaterno(textFieldApellidoPaterno.getText());
+            usuario.setApellidoMaterno(textFieldApellidoMaterno.getText());
+            usuario.setEstado("Activo");
+            usuario.setTurno((String) comboBoxTurno.getValue());
+            usuario.setTipoUsuario(2);
             
             this.textFieldNumeroPersonal.setText("");
             this.textFieldNombre.setText("");
             this.textFieldApellidoPaterno.setText("");
             this.textFieldApellidoMaterno.setText("");
 
-            coordinadorDao.saveCoordinador(coordinador);
+            usuarioDao.saveUsuario(usuario);
         }    
     }    
 }

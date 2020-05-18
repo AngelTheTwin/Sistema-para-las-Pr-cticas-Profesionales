@@ -7,7 +7,8 @@ package datos.daoimpl;
 
 import entidades.Cronograma;
 import java.util.List;
-import static org.junit.Assert.*;
+import org.junit.jupiter.api.Test;
+import static org.junit.jupiter.api.Assertions.*;
 
 /**
  *
@@ -16,28 +17,32 @@ import static org.junit.Assert.*;
 public class CronogramaDaoImplTest {
     
     public CronogramaDaoImplTest() {
+        this.testGetCronogramaByIdCronograma();
+        this.testGetAllCronogramas();
+        this.testSaveCronograma();
+        this.testDeleteCronograma();
     }
 
-    @org.junit.Test
+    @Test
     public void testGetAllCronogramas() {
         CronogramaDaoImpl cronogramaDaoImpl = new CronogramaDaoImpl();
         List <Cronograma> cronogramas = cronogramaDaoImpl.getAllCronogramas();
         int resultadoEsperado = 1;
         int resultadoObtenido = cronogramas.size();
-        assertEquals("Prueba GetAllAutoevaluaciones", resultadoEsperado, resultadoObtenido);
+        assertEquals(resultadoEsperado, resultadoObtenido, "Prueba GetAllAutoevaluaciones ");
     }
 
-    @org.junit.Test
+    @Test
     public void testGetCronogramaByIdCronograma() {
         CronogramaDaoImpl cronogramaDaoImpl;
         cronogramaDaoImpl = new CronogramaDaoImpl();
         Cronograma resultadoEsperado = new Cronograma();
         resultadoEsperado.setRuta("C:/Users/angel/Downloads/6_PUDS.pdf");
         Cronograma resultadoObtenido = cronogramaDaoImpl.getCronogramaByIdCronograma("1");
-        assertEquals("Prueba getCronogramaByIdCronograma", resultadoEsperado, resultadoObtenido);
+        assertEquals(resultadoEsperado, resultadoObtenido, "Prueba getCronogramaByIdCronograma");
     }
 
-    @org.junit.Test
+    @Test
     public void testSaveCronograma() {
         CronogramaDaoImpl cronogramaDaoImpl = new CronogramaDaoImpl();
         Cronograma cronograma = new Cronograma();
@@ -46,10 +51,10 @@ public class CronogramaDaoImplTest {
         List <Cronograma> cronogramas = cronogramaDaoImpl.getAllCronogramas();
         int resultadoEsperado = 2;
         int resultadoObtenido = cronogramas.size();
-        assertEquals("Prueba saveCronograma", resultadoEsperado, resultadoObtenido);
+        assertEquals(resultadoEsperado, resultadoObtenido, "Prueba saveCronograma ");
     }
 
-    @org.junit.Test
+    @Test
     public void testDeleteCronograma() {
         CronogramaDaoImpl cronogramaDaoImpl = new CronogramaDaoImpl();
         Cronograma cronograma = new Cronograma();
@@ -58,7 +63,7 @@ public class CronogramaDaoImplTest {
         List <Cronograma> cronogramas = cronogramaDaoImpl.getAllCronogramas();
         int resultadoEsperado = 1;
         int resultadoObtenido = cronogramas.size();
-        assertEquals("Prueba deleteCronograma", resultadoEsperado, resultadoObtenido);
+        assertEquals(resultadoEsperado, resultadoObtenido, "Prueba deleteCronograma ");
     }
     
 }

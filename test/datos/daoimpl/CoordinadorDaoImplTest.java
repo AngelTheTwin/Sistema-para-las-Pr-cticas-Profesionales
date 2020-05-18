@@ -7,6 +7,7 @@ package datos.daoimpl;
 
 import entidades.Coordinador;
 import java.util.List;
+import org.junit.Test;
 import static org.junit.Assert.*;
 
 /**
@@ -32,14 +33,13 @@ public class CoordinadorDaoImplTest {
     @org.junit.Test
     public void testSaveCoordinador() {
         System.out.println("saveCoordinador");
-        Coordinador coordinador = new Coordinador();
+        Coordinador coordinador = null;
         coordinador.setNumeroPersonalCoordinador("c001");
         coordinador.setNombreCoordinador("Enrique");
         coordinador.setApellidoPaternoCoordinador("Trujillo");
         coordinador.setApellidoMaternoCoordinador("Ornelas");
         coordinador.setContraseñaCoordinador("ETOc001");
         coordinador.setFechaRegistroCoordinador(null);
-        coordinador.setTurnoCoordinador("Matutino");
         coordinador.setTiempoServicioCoordinador(5);
         coordinador.setEstadoCoordinador("Activo");
         CoordinadorDaoImpl instance = new CoordinadorDaoImpl();
@@ -50,7 +50,7 @@ public class CoordinadorDaoImplTest {
     @org.junit.Test
     public void testDeleteCoordinador() {
         System.out.println("deleteCoordinador");
-        Coordinador coordinador = new Coordinador();
+        Coordinador coordinador = null;
         coordinador.setNumeroPersonalCoordinador("c001");
         CoordinadorDaoImpl instance = new CoordinadorDaoImpl();
         

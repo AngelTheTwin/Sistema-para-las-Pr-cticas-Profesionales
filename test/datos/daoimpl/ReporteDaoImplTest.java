@@ -7,7 +7,8 @@ package datos.daoimpl;
 
 import entidades.Reporte;
 import java.util.List;
-import static org.junit.Assert.*;
+import org.junit.jupiter.api.Test;
+import static org.junit.jupiter.api.Assertions.*;
 
 /**
  *
@@ -22,27 +23,27 @@ public class ReporteDaoImplTest {
         this.testDeleteReporte();
     }
 
-    @org.junit.Test
+    @Test
     public void testGetAllReportes() {
         ReporteDaoImpl reporteDaoImpl;
         reporteDaoImpl = new ReporteDaoImpl();
         List <Reporte> reportes = reporteDaoImpl.getAllReportes();
         int resultadoEsperado = 1;
         int resultadoObtenido = reportes.size();
-        assertEquals("Prueba GetAllHorarios", resultadoEsperado, resultadoObtenido);
+        assertEquals(resultadoEsperado, resultadoObtenido, "Prueba GetAllHorarios ");
     }
 
-    @org.junit.Test
+    @Test
     public void testGetReporteByIdReporte() {
         ReporteDaoImpl reporteDaoImpl;
         reporteDaoImpl = new ReporteDaoImpl();
         Reporte resultadoEsperado = new Reporte();
         resultadoEsperado.setRuta("C:/Users/angel/Downloads/6_PUDS.pdf");
         Reporte resultadoObtenido = reporteDaoImpl.getReporteByIdReporte("1");
-        assertEquals("Prueba getReporteByIdReporte", resultadoEsperado, resultadoObtenido);
+        assertEquals(resultadoEsperado, resultadoObtenido, "Prueba getReporteByIdReporte");
     }
 
-    @org.junit.Test
+    @Test
     public void testSaveReporte() {
         ReporteDaoImpl reporteDaoImpl;
         reporteDaoImpl = new ReporteDaoImpl();
@@ -52,10 +53,10 @@ public class ReporteDaoImplTest {
         List <Reporte> reportes = reporteDaoImpl.getAllReportes();
         int resultadoEsperado = 2;
         int resultadoObtenido = reportes.size();
-        assertEquals("Prueba saveReporte", resultadoEsperado, resultadoObtenido);
+        assertEquals(resultadoEsperado, resultadoObtenido, "Prueba saveReporte ");
     }
 
-    @org.junit.Test
+    @Test
     public void testDeleteReporte() {
         ReporteDaoImpl reporteDaoImpl;
         reporteDaoImpl = new ReporteDaoImpl();
@@ -65,6 +66,7 @@ public class ReporteDaoImplTest {
         List <Reporte> reportes = reporteDaoImpl.getAllReportes();
         int resultadoEsperado = 1;
         int resultadoObtenido = reportes.size();
-        assertEquals("Prueba deleteReporte", resultadoEsperado, resultadoObtenido);
-    }   
+        assertEquals(resultadoEsperado, resultadoObtenido, "Prueba deleteReporte ");
+    }
+    
 }

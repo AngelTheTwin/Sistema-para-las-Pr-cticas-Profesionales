@@ -4,14 +4,14 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.Pane?>
 
-
-<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/8.0.171" fx:controller="gui.controladores.FXML_MenuAdministradorController">
+<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.controladores.FXML_MenuAdministradorController">
    <children>
       <Pane layoutX="53.0" layoutY="29.0" prefHeight="335.0" prefWidth="487.0">
          <children>
             <Button fx:id="buttonCerrarSesion" layoutX="386.0" layoutY="14.0" mnemonicParsing="false" text="Cerrar Sesion" />
-            <Button id="buttonFuncionesCoordinador" fx:id="buttonAdministrarProfesor" layoutX="163.0" layoutY="79.0" mnemonicParsing="false" prefHeight="55.0" prefWidth="162.0" text="Administrar Profesor" />
-            <Button fx:id="buttonAdministrarCoordinador" layoutX="163.0" layoutY="195.0" mnemonicParsing="false" prefHeight="55.0" prefWidth="162.0" text="Administrar Coordinador" />
+            <Button id="buttonFuncionesCoordinador" fx:id="buttonAdministrarProfesor" layoutX="41.0" layoutY="106.0" mnemonicParsing="false" prefHeight="55.0" prefWidth="162.0" text="Administrar Profesor" />
+            <Button fx:id="buttonAdministrarCoordinador" layoutX="305.0" layoutY="106.0" mnemonicParsing="false" prefHeight="55.0" prefWidth="162.0" text="Administrar Coordinador" />
+            <Button fx:id="buttonAdministrarPracticante" layoutX="163.0" layoutY="223.0" mnemonicParsing="false" prefHeight="55.0" prefWidth="162.0" text="Administar Practicante" />
          </children>
       </Pane>
    </children>

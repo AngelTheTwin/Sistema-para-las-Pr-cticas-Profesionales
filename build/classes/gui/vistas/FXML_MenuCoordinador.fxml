@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
+
+
+<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/8.0.171" fx:controller="gui.controladores.FXML_MenuCoordinadorController">
+   <children>
+      <Pane layoutX="75.0" layoutY="32.0" prefHeight="337.0" prefWidth="451.0">
+         <children>
+            <Label layoutX="175.0" layoutY="22.0" text="Menú Coordinador" />
+         </children>
+      </Pane>
+   </children>
+</AnchorPane>

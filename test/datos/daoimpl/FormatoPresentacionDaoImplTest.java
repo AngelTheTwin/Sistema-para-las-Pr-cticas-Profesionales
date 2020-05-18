@@ -7,7 +7,8 @@ package datos.daoimpl;
 
 import entidades.FormatoPresentacion;
 import java.util.List;
-import static org.junit.Assert.*;
+import org.junit.jupiter.api.Test;
+import static org.junit.jupiter.api.Assertions.*;
 
 /**
  *
@@ -22,26 +23,26 @@ public class FormatoPresentacionDaoImplTest {
         this.testDeleteFormatoPresentacion();
     }
 
-    @org.junit.Test
+    @Test
     public void testGetAllPresentaciones() {
         FormatoPresentacionDaoImpl formatoPresentacionDaoImpl = new FormatoPresentacionDaoImpl();
         List <FormatoPresentacion> formatosPresentacion = formatoPresentacionDaoImpl.getAllPresentaciones();
         int resultadoEsperado = 1;
         int resultadoObtenido = formatosPresentacion.size();
-        assertEquals("Prueba GetAllPresentaciones", resultadoEsperado, resultadoObtenido);
+        assertEquals(resultadoEsperado, resultadoObtenido, "Prueba GetAllPresentaciones ");
     }
 
-    @org.junit.Test
+    @Test
     public void testGetFormatoPresentacionByIdFormato() {
         FormatoPresentacionDaoImpl formatoPresentacionDaoImpl;
         formatoPresentacionDaoImpl = new FormatoPresentacionDaoImpl();
         FormatoPresentacion resultadoEsperado = new FormatoPresentacion();
         resultadoEsperado.setRuta("C:/Users/angel/Downloads/6_PUDS.pdf");
         FormatoPresentacion resultadoObtenido = formatoPresentacionDaoImpl.getFormatoPresentacionByIdFormato("1");
-        assertEquals("Prueba getFormatoPresentacionByIdFormato", resultadoEsperado, resultadoObtenido);
+        assertEquals(resultadoEsperado, resultadoObtenido, "Prueba getFormatoPresentacionByIdFormato");
     }
 
-    @org.junit.Test
+    @Test
     public void testSaveFormatoPresentacion() {
         FormatoPresentacionDaoImpl formatoPresentacionDaoImpl;
         formatoPresentacionDaoImpl = new FormatoPresentacionDaoImpl();
@@ -51,10 +52,10 @@ public class FormatoPresentacionDaoImplTest {
         List <FormatoPresentacion> formatosPresentacion = formatoPresentacionDaoImpl.getAllPresentaciones();
         int resultadoEsperado = 2;
         int resultadoObtenido = formatosPresentacion.size();
-        assertEquals("Prueba saveFormatoPresentacion", resultadoEsperado, resultadoObtenido);
+        assertEquals(resultadoEsperado, resultadoObtenido, "Prueba saveFormatoPresentacion");
     }
 
-    @org.junit.Test
+    @Test
     public void testDeleteFormatoPresentacion() {
         FormatoPresentacionDaoImpl formatoPresentacionDaoImpl;
         formatoPresentacionDaoImpl = new FormatoPresentacionDaoImpl();
@@ -64,7 +65,7 @@ public class FormatoPresentacionDaoImplTest {
         List <FormatoPresentacion> formatosPresentacion = formatoPresentacionDaoImpl.getAllPresentaciones();
         int resultadoEsperado = 1;
         int resultadoObtenido = formatosPresentacion.size();
-        assertEquals("Prueba deleteFormatoPresentacion", resultadoEsperado, resultadoObtenido);
+        assertEquals(resultadoEsperado, resultadoObtenido, "Prueba deleteFormatoPresentacion");
     }
     
 }

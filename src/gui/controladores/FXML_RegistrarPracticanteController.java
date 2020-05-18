@@ -6,7 +6,9 @@
 package gui.controladores;
 
 import datos.daoimpl.PracticanteDaoImpl;
+import datos.daoimpl.UsuarioDaoImpl;
 import entidades.Practicante;
+import entidades.Usuario;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -88,24 +90,23 @@ public class FXML_RegistrarPracticanteController implements Initializable {
                 textAreaApellidoMaternoPracticante.getText().isEmpty()){
              JOptionPane.showMessageDialog(null, "Favor de llenar todos los campos");
         }else{
-            Practicante practicante = new Practicante();
-            PracticanteDaoImpl practicanteDao = new PracticanteDaoImpl();
+            Usuario usuario = new Usuario();
+            UsuarioDaoImpl usuarioDao = new UsuarioDaoImpl();
 
-            practicante.setMatricula(textAreaMatriculaPracticante.getText());
-            practicante.setNombrePracticante(textAreaNombrePracticante.getText());
-            practicante.setApellidoPaternoPracticante(textAreaApellidoPaternoPracticante.getText());
-            practicante.setApellidoMaternoPracticante(textAreaApellidoMaternoPracticante.getText());
-            practicante.setTurnoPracticante((String) comboBoxTurnoPracticante.getValue());
-            practicante.setGeneroPracticante((String)comboBoxGeneroPracticante.getValue());
-            practicante.setPeriodoPracticante(Integer.parseInt((String) comboBoxPeriodoPracticante.getValue()));
-            practicante.setEstadoPracticante("Activo");
+            usuario.setMatricula(textAreaMatriculaPracticante.getText());
+            usuario.setNombre(textAreaNombrePracticante.getText());
+            usuario.setApellidoPaterno(textAreaApellidoPaternoPracticante.getText());
+            usuario.setApellidoMaterno(textAreaApellidoMaternoPracticante.getText());
+            usuario.setEstado("Activo");
+            usuario.setTurno((String) comboBoxTurnoPracticante.getValue());
+            usuario.setTipoUsuario(4);
             
             this.textAreaMatriculaPracticante.setText("");
             this.textAreaNombrePracticante.setText("");
             this.textAreaApellidoPaternoPracticante.setText("");
             this.textAreaApellidoMaternoPracticante.setText("");
 
-            practicanteDao.savePracticante(practicante);
+            usuarioDao.saveUsuario(usuario);
         }
     }
     

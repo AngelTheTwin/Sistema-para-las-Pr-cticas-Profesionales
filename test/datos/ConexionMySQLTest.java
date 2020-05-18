@@ -6,7 +6,7 @@
 package datos;
 
 import java.sql.Connection;
-import org.junit.Test;
+import java.sql.SQLException;
 import static org.junit.Assert.*;
 
 /**
@@ -28,7 +28,7 @@ public class ConexionMySQLTest {
     }
 
     @org.junit.Test
-    public void testDesconectar() {
+    public void testDesconectar() throws SQLException {
         System.out.println("desconectar");
         Connection coneccion = conexion.obtenerConexion();
        assertTrue(coneccion.isClosed());

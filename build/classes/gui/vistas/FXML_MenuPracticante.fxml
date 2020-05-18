@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
+
+
+<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/8.0.171" fx:controller="gui.controladores.FXML_MenuPracticanteController">
+   <children>
+      <Pane layoutX="87.0" layoutY="32.0" prefHeight="336.0" prefWidth="427.0">
+         <children>
+            <Label layoutX="167.0" layoutY="26.0" text="Menú Practicante" />
+         </children>
+      </Pane>
+   </children>
+</AnchorPane>
