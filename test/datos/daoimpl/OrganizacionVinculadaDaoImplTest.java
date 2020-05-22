@@ -7,7 +7,6 @@ package datos.daoimpl;
 
 import entidades.OrganizacionVinculada;
 import java.util.List;
-import org.junit.Test;
 import static org.junit.Assert.*;
 
 /**
@@ -42,7 +41,7 @@ public class OrganizacionVinculadaDaoImplTest {
     @org.junit.Test
     public void testSaveOrganizacionVinculada() {
         System.out.println("saveOrganizacionVinculada");
-        OrganizacionVinculada organizacionVinculada = null;
+        OrganizacionVinculada organizacionVinculada = new OrganizacionVinculada();
         organizacionVinculada.setNombreOrganizacion("IBM");
         organizacionVinculada.setDireccion("Leon Tolstoi #14");
         organizacionVinculada.setCiudad("ZMG");
@@ -57,7 +56,7 @@ public class OrganizacionVinculadaDaoImplTest {
     @org.junit.Test
     public void testDeleteOrganizacionVinculada() {
         System.out.println("deleteOrganizacionVinculada");
-        OrganizacionVinculada organizacionVinculada = null;
+        OrganizacionVinculada organizacionVinculada = new OrganizacionVinculada();
         organizacionVinculada.setNombreOrganizacion("IBM");
         OrganizacionVinculadaDaoImpl instancia = new OrganizacionVinculadaDaoImpl();
         instancia.deleteOrganizacionVinculada(organizacionVinculada);

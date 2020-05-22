@@ -7,8 +7,7 @@ package datos.daoimpl;
 
 import entidades.ActividadRealizada;
 import java.util.List;
-import org.junit.jupiter.api.Test;
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.Assert.*;
 
 /**
  *
@@ -17,22 +16,18 @@ import static org.junit.jupiter.api.Assertions.*;
 public class ActividadRealizadaDaoImplTest {
     
     public ActividadRealizadaDaoImplTest() {
-        this.testGetActividadRealizadaByIdActividadRealizada();
-        this.testGetAllActividadesRealizadas();
-        this.testSaveActividadRealizada();
-        this.testDeleteActividadRealizada();
     }
 
-    @Test
+    @org.junit.Test
     public void testGetAllActividadesRealizadas() {
         ActividadRealizadaDaoImpl actividadDaoImpl = new ActividadRealizadaDaoImpl();
         List <ActividadRealizada> actividadesRealizadas = actividadDaoImpl.getAllActividadesRealizadas();
         int resultadoEsperado = 1;
         int resultadoObtenido = actividadesRealizadas.size();
-        assertEquals(resultadoEsperado, resultadoObtenido, "Prueba GetAllActividadesRealizadas ");
+        assertEquals("Prueba GetAllActividadesRealizadas", resultadoEsperado, resultadoObtenido);
     }
 
-    @Test
+    @org.junit.Test
     public void testSaveActividadRealizada() {
         ActividadRealizadaDaoImpl actividadDaoImpl = new ActividadRealizadaDaoImpl();
         ActividadRealizada actividadRealizada = new ActividadRealizada();
@@ -41,10 +36,10 @@ public class ActividadRealizadaDaoImplTest {
         List <ActividadRealizada> actividadesRealizadas = actividadDaoImpl.getAllActividadesRealizadas();
         int resultadoEsperado = 2;
         int resultadoObtenido = actividadesRealizadas.size();
-        assertEquals(resultadoEsperado, resultadoObtenido, "Prueba saveActividadRealizada ");
+        assertEquals("Prueba saveActividadRealizada", resultadoEsperado, resultadoObtenido);
     }
 
-    @Test
+    @org.junit.Test
     public void testDeleteActividadRealizada() {
         ActividadRealizadaDaoImpl actividadDaoImpl = new ActividadRealizadaDaoImpl();
         ActividadRealizada actividadRealizada = new ActividadRealizada();
@@ -53,17 +48,17 @@ public class ActividadRealizadaDaoImplTest {
         List <ActividadRealizada> actividadesRealizadas = actividadDaoImpl.getAllActividadesRealizadas();
         int resultadoEsperado = 1;
         int resultadoObtenido = actividadesRealizadas.size();
-        assertEquals(resultadoEsperado, resultadoObtenido, "Prueba deleteActividadRealizada ");
+        assertEquals("Prueba deleteActividadRealizada", resultadoEsperado, resultadoObtenido);
     }
 
-    @Test
+    @org.junit.Test
     public void testGetActividadRealizadaByIdActividadRealizada() {
         ActividadRealizadaDaoImpl actividadDaoImpl;
         actividadDaoImpl = new ActividadRealizadaDaoImpl();
         ActividadRealizada resultadoEsperado = new ActividadRealizada();
         resultadoEsperado.setRuta("C:/Users/angel/Downloads/6_PUDS.pdf");
-        ActividadRealizada resultadoObtenido = actividadDaoImpl.getActividadRealizadaByIdActividadRealizada(1);
-        assertEquals(resultadoEsperado, resultadoObtenido, "Prueba getActividadRealizadaByIdActividadRealizada ");
+        ActividadRealizada resultadoObtenido = actividadDaoImpl.getActividadRealizadaByIdActividadRealizada("1");
+        assertEquals("Prueba getActividadRealizadaByIdActividadRealizada", resultadoEsperado, resultadoObtenido);
     }
     
 }

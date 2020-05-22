@@ -7,7 +7,6 @@ package datos.daoimpl;
 
 import entidades.ResponsableProyecto;
 import java.util.List;
-import org.junit.Test;
 import static org.junit.Assert.*;
 
 /**
@@ -32,7 +31,7 @@ public class ResponsableProyectoDaoImplTest {
     @org.junit.Test
     public void testSaveResponsableProyecto() {
         System.out.println("saveResponsableProyecto");
-        ResponsableProyecto responsableProyecto = null;
+        ResponsableProyecto responsableProyecto = new ResponsableProyecto();
         responsableProyecto.setIdResponsableProyecto("rp015");
         responsableProyecto.setNombreResponsableProyecto("Carlos");
         responsableProyecto.setApellidoPaternoResponsableProyecto("Arriaga");
@@ -46,7 +45,7 @@ public class ResponsableProyectoDaoImplTest {
     @org.junit.Test
     public void testDeleteResponsableProyecto() {
         System.out.println("deleteResponsableProyecto");
-        ResponsableProyecto responsableProyecto = null;
+        ResponsableProyecto responsableProyecto = new ResponsableProyecto();
         responsableProyecto.setIdResponsableProyecto("rp015");
         ResponsableProyectoDaoImpl instancia = new ResponsableProyectoDaoImpl();
         instancia.deleteResponsableProyecto(responsableProyecto);

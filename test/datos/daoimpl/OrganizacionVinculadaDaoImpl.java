@@ -12,6 +12,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -23,7 +24,6 @@ import java.util.logging.Logger;
 public class OrganizacionVinculadaDaoImpl implements OrganizacionVinculadaDao{
     
     private final ConexionMySQL conexion;
-    private List<OrganizacionVinculada> organizaciones;
     private ResultSet resultadoConsulta;
     
     public OrganizacionVinculadaDaoImpl(){
@@ -33,6 +33,7 @@ public class OrganizacionVinculadaDaoImpl implements OrganizacionVinculadaDao{
     @Override
     public List<OrganizacionVinculada> getAllOrganizacionesVinculadas() {
         OrganizacionVinculada organizacionVinculada;
+        List<OrganizacionVinculada> organizaciones = new ArrayList<>();
         try(Connection conectar = conexion.obtenerConexion()){
             String consulta  = "Select * from OrganizacionVinculada";
             PreparedStatement sentencia = conectar.prepareStatement(consulta);
@@ -101,7 +102,6 @@ public class OrganizacionVinculadaDaoImpl implements OrganizacionVinculadaDao{
         }finally{
             conexion.desconectar();
         }
-        organizaciones.add(organizacionVinculada);
     }
 
     @Override
@@ -118,6 +118,5 @@ public class OrganizacionVinculadaDaoImpl implements OrganizacionVinculadaDao{
         }finally{
             conexion.desconectar();
         }
-        organizaciones.remove(organizacionVinculada);
     }
 }

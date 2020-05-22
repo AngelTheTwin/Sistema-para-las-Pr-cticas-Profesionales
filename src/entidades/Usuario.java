@@ -17,6 +17,7 @@ public class Usuario {
     private String contraseña;
     private String estado;
     private String turno;
+    private String email;
     private int tipoUsuario;
 
     public String getMatricula() {
@@ -73,6 +74,14 @@ public class Usuario {
 
     public void setTurno(String turno) {
         this.turno = turno;
+    }
+    
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
     }
 
     public int getTipoUsuario() {

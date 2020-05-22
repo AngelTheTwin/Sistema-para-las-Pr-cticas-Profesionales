@@ -16,6 +16,7 @@ import java.util.logging.Logger;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Button;
 import javafx.stage.Stage;
 
 /**
@@ -24,8 +25,10 @@ import javafx.stage.Stage;
  */
 public class IniciarMenu {
     
-    public void iniciarMenuAdministrador(){
+    public void iniciarMenuAdministrador(Button buttonAceptar){
         try{
+            Stage stagePrincipal = (Stage) buttonAceptar.getScene().getWindow();
+            stagePrincipal.close();
             FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/gui/vistas/FXML_MenuAdministrador.fxml"));
             Parent root = (Parent) fxmlLoader.load();
             Stage escenario = new Stage();
@@ -38,8 +41,10 @@ public class IniciarMenu {
         }
     }
     
-    public void iniciarMenuCoordinador(){
+    public void iniciarMenuCoordinador(Button buttonAceptar){
         try{
+            Stage stagePrincipal = (Stage) buttonAceptar.getScene().getWindow();
+            stagePrincipal.close();
             FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/gui/vistas/FXML_MenuCoordinador.fxml"));
             Parent root = (Parent) fxmlLoader.load();
             Stage escenario = new Stage();
@@ -52,8 +57,10 @@ public class IniciarMenu {
         }
     }
         
-    public void iniciarMenuProfesor(){
+    public void iniciarMenuProfesor(Button buttonAceptar){
         try{
+            Stage stagePrincipal = (Stage) buttonAceptar.getScene().getWindow();
+            stagePrincipal.close();
             FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/gui/vistas/FXML_MenuProfesor.fxml"));
             Parent root = (Parent) fxmlLoader.load();
             Stage escenario = new Stage();
@@ -66,8 +73,10 @@ public class IniciarMenu {
         }
     }
             
-    public void iniciarMenuPracticante(){
+    public void iniciarMenuPracticante(Button buttonAceptar){
         try{
+            Stage stagePrincipal = (Stage) buttonAceptar.getScene().getWindow();
+            stagePrincipal.close();
             FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/gui/vistas/FXML_MenuPracticante.fxml"));
             Parent root = (Parent) fxmlLoader.load();
             Stage escenario = new Stage();

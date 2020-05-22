@@ -12,6 +12,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -21,7 +22,6 @@ import java.util.logging.Logger;
  * @author angel
  */
 public class ProfesorDaoImpl implements ProfesorDao{
-    List<Profesor> profesores;
     private final ConexionMySQL conexion;
     private ResultSet resultadoConsulta;
     
@@ -32,6 +32,7 @@ public class ProfesorDaoImpl implements ProfesorDao{
     @Override
     public List<Profesor> getAllProfesores() {
         Profesor profesor;
+        List<Profesor> profesores = new ArrayList<>();
         try(Connection conectar = conexion.obtenerConexion()){
             String consulta  = "Select * from Profesor";
             PreparedStatement sentencia = conectar.prepareStatement(consulta);
@@ -99,7 +100,6 @@ public class ProfesorDaoImpl implements ProfesorDao{
         }finally{
             conexion.desconectar();
         }
-        profesores.add(profesor);
     }
     @Override
     
@@ -115,6 +115,5 @@ public class ProfesorDaoImpl implements ProfesorDao{
         }finally{
             conexion.desconectar();
         }
-        profesores.remove(profesor);
     }
 }

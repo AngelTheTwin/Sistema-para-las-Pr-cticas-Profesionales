@@ -13,14 +13,14 @@ import logica.Documento;
  * @author dagam
  */
 public class Autoevaluacion extends Documento{
-    private String idAutoevaluacion;
+    private int idAutoevaluacion;
     private File archivoAutoevaluacion;
 
-    public String getIdAutoevaluacion() {
+    public int getIdAutoevaluacion() {
         return idAutoevaluacion;
     }
 
-    public void setIdAutoevaluacion(String idAutoevaluacion) {
+    public void setIdAutoevaluacion(int idAutoevaluacion) {
         this.idAutoevaluacion = idAutoevaluacion;
     }
 

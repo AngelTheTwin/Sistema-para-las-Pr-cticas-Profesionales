@@ -6,8 +6,6 @@
 package gui.controladores;
 
 import datos.ConexionMySQL;
-import datos.dao.UsuarioDao;
-import datos.daoimpl.UsuarioDaoImpl;
 import java.io.IOException;
 import java.net.URL;
 import java.sql.Connection;
@@ -15,19 +13,16 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ResourceBundle;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
+import javafx.scene.image.ImageView;
 import javafx.stage.Stage;
 import javax.swing.JOptionPane;
+import logica.Hash;
 import logica.IniciarMenu;
 
 /**
@@ -46,7 +41,6 @@ public class FXML_LoginController implements Initializable {
     
     private final ConexionMySQL conexion;
     private ResultSet resultadoConsulta;
-    private ResultSet resultadoConsultaTipoUsuario;
     
     IniciarMenu iniciar = new IniciarMenu();
 
@@ -56,12 +50,10 @@ public class FXML_LoginController implements Initializable {
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        // TODO
     }    
 
     @FXML
     private void aceptar(ActionEvent event) throws SQLException, IOException {
-        UsuarioDaoImpl usuario = new UsuarioDaoImpl();
         
         if(textFieldMatricula.getText().isEmpty() || passwordFieldContraseña.getText().isEmpty()){
             JOptionPane.showMessageDialog(null, "Hay campos vacios, debe llenar todos los datos");
@@ -69,11 +61,13 @@ public class FXML_LoginController implements Initializable {
             try(Connection conectar = conexion.obtenerConexion()){
                 String matricula = textFieldMatricula.getText();
                 String contraseña = String.valueOf(passwordFieldContraseña.getText());
-
+                
+                String contraseñaHash = Hash.sha1(contraseña);
+                
                 String consulta  = "Select * from Usuarios where Matricula=? and Contraseña=?";
                 PreparedStatement sentencia = conectar.prepareStatement(consulta);
                 sentencia.setString(1, matricula);
-                sentencia.setString(2, contraseña);
+                sentencia.setString(2, contraseñaHash);
                 resultadoConsulta = sentencia.executeQuery();
 
                 if(resultadoConsulta.next()){
@@ -82,19 +76,17 @@ public class FXML_LoginController implements Initializable {
                     if(resultadoConsulta.first()){
                         tipoUsuario = resultadoConsulta.getInt("Tipo_Usuario");
                         
-                        System.out.println(tipoUsuario);
-                        
                         if(tipoUsuario == 1)
-                        iniciar.iniciarMenuAdministrador();
+                        iniciar.iniciarMenuAdministrador(buttonAceptar);
                         
                         if(tipoUsuario == 2)
-                        iniciar.iniciarMenuCoordinador();
+                        iniciar.iniciarMenuCoordinador(buttonAceptar);
                         
                         if(tipoUsuario == 3)
-                        iniciar.iniciarMenuProfesor();
+                        iniciar.iniciarMenuProfesor(buttonAceptar);
                         
                         if(tipoUsuario == 4)
-                        iniciar.iniciarMenuPracticante();
+                        iniciar.iniciarMenuPracticante(buttonAceptar);
                     }
                 }else{
                     JOptionPane.showMessageDialog(null, "Matrícula o contraseña incorrectos");
@@ -107,5 +99,5 @@ public class FXML_LoginController implements Initializable {
     
     public FXML_LoginController(){
         conexion = new ConexionMySQL();
-    }     
+    }
 }

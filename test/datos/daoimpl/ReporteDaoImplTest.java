@@ -7,8 +7,7 @@ package datos.daoimpl;
 
 import entidades.Reporte;
 import java.util.List;
-import org.junit.jupiter.api.Test;
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.Assert.*;
 
 /**
  *
@@ -17,33 +16,29 @@ import static org.junit.jupiter.api.Assertions.*;
 public class ReporteDaoImplTest {
     
     public ReporteDaoImplTest() {
-        this.testGetReporteByIdReporte();
-        this.testGetAllReportes();
-        this.testSaveReporte();
-        this.testDeleteReporte();
     }
 
-    @Test
+    @org.junit.Test
     public void testGetAllReportes() {
         ReporteDaoImpl reporteDaoImpl;
         reporteDaoImpl = new ReporteDaoImpl();
         List <Reporte> reportes = reporteDaoImpl.getAllReportes();
         int resultadoEsperado = 1;
         int resultadoObtenido = reportes.size();
-        assertEquals(resultadoEsperado, resultadoObtenido, "Prueba GetAllHorarios ");
+        assertEquals("Prueba GetAllHorarios", resultadoEsperado, resultadoObtenido);
     }
 
-    @Test
+    @org.junit.Test
     public void testGetReporteByIdReporte() {
         ReporteDaoImpl reporteDaoImpl;
         reporteDaoImpl = new ReporteDaoImpl();
         Reporte resultadoEsperado = new Reporte();
         resultadoEsperado.setRuta("C:/Users/angel/Downloads/6_PUDS.pdf");
         Reporte resultadoObtenido = reporteDaoImpl.getReporteByIdReporte("1");
-        assertEquals(resultadoEsperado, resultadoObtenido, "Prueba getReporteByIdReporte");
+        assertEquals("Prueba getReporteByIdReporte", resultadoEsperado, resultadoObtenido);
     }
 
-    @Test
+    @org.junit.Test
     public void testSaveReporte() {
         ReporteDaoImpl reporteDaoImpl;
         reporteDaoImpl = new ReporteDaoImpl();
@@ -53,10 +48,10 @@ public class ReporteDaoImplTest {
         List <Reporte> reportes = reporteDaoImpl.getAllReportes();
         int resultadoEsperado = 2;
         int resultadoObtenido = reportes.size();
-        assertEquals(resultadoEsperado, resultadoObtenido, "Prueba saveReporte ");
+        assertEquals("Prueba saveReporte", resultadoEsperado, resultadoObtenido);
     }
 
-    @Test
+    @org.junit.Test
     public void testDeleteReporte() {
         ReporteDaoImpl reporteDaoImpl;
         reporteDaoImpl = new ReporteDaoImpl();
@@ -66,7 +61,6 @@ public class ReporteDaoImplTest {
         List <Reporte> reportes = reporteDaoImpl.getAllReportes();
         int resultadoEsperado = 1;
         int resultadoObtenido = reportes.size();
-        assertEquals(resultadoEsperado, resultadoObtenido, "Prueba deleteReporte ");
-    }
-    
+        assertEquals("Prueba deleteReporte", resultadoEsperado, resultadoObtenido);
+    }   
 }

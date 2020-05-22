@@ -67,6 +67,25 @@ public class FXML_AdministrarProfesorController implements Initializable {
             }  
         });
         
+        buttonEliminarProfesor.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent event) {
+                try{
+                    Stage stagePrincipal = (Stage) buttonEliminarProfesor.getScene().getWindow();
+                    stagePrincipal.close();
+                    FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/gui/vistas/FMXL_EliminarProfesor.fxml"));
+                    Parent root1 = (Parent) fxmlLoader.load();
+                    Stage stage = new Stage();
+                    stage.setResizable(false);
+                    stage.setScene(new Scene(root1));
+                    stage.show();
+                }catch(IOException ex) {
+                    Logger logger = Logger.getLogger(getClass().getName());
+                    logger.log(Level.SEVERE, "Error al crear ventana.", ex);
+                }
+            }
+        });
+        
         buttonRegresar.setOnAction(new EventHandler<ActionEvent>(){
             @Override
             public void handle(ActionEvent event) {
@@ -84,6 +103,25 @@ public class FXML_AdministrarProfesorController implements Initializable {
                     logger.log(Level.SEVERE, "Error al crear ventana.", ex);
                 }
             }  
+        });
+        
+        buttonCerrarSesion.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent event) {
+                try {
+                    Stage stagePrincipal = (Stage) buttonCerrarSesion.getScene().getWindow();
+                    stagePrincipal.close();
+                    FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/gui/vistas/FXML_MenuAdministrador.fxml"));
+                    Parent root1 = (Parent) fxmlLoader.load();
+                    Stage stage = new Stage();
+                    stage.setResizable(false);
+                    stage.setScene(new Scene(root1));
+                    stage.show();
+               } catch(IOException ex) {
+                    Logger logger = Logger.getLogger(getClass().getName());
+                    logger.log(Level.SEVERE, "Error al crear ventana.", ex);
+                }
+            }
         });
     }
 }

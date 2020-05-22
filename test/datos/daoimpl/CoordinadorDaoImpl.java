@@ -12,6 +12,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -22,7 +23,6 @@ import java.util.logging.Logger;
  */
 public class CoordinadorDaoImpl implements CoordinadorDao{
     private final ConexionMySQL conexion;
-    private List<Coordinador> coordinadores;
     private ResultSet resultadoConsulta;
     
     public CoordinadorDaoImpl(){
@@ -32,6 +32,7 @@ public class CoordinadorDaoImpl implements CoordinadorDao{
     @Override
     public List<Coordinador> getAllCoordinadores() {
         Coordinador coordinador;
+        List<Coordinador> coordinadores = new ArrayList<>();
         try(Connection conectar = conexion.obtenerConexion()){
             String consulta  = "Select * from Coordinador";
             PreparedStatement sentencia = conectar.prepareStatement(consulta);
@@ -78,7 +79,6 @@ public class CoordinadorDaoImpl implements CoordinadorDao{
         }finally{
             conexion.desconectar();
         }
-        //coordinadores.add(coordinador);
     }
 
     @Override
@@ -95,7 +95,6 @@ public class CoordinadorDaoImpl implements CoordinadorDao{
         }finally{
             conexion.desconectar();
         }
-        //coordinadores.remove(coordinador);
     }
 
     @Override

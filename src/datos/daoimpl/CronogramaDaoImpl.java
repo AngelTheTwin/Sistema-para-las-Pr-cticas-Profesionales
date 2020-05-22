@@ -13,6 +13,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -24,7 +25,6 @@ import java.util.logging.Logger;
 public class CronogramaDaoImpl implements CronogramaDao{
     
     private final ConexionMySQL conexion;
-    private List<Cronograma> cronogramas;
     private ResultSet resultadoConsulta;
     
     public CronogramaDaoImpl(){
@@ -34,6 +34,7 @@ public class CronogramaDaoImpl implements CronogramaDao{
     @Override
     public List<Cronograma> getAllCronogramas() {
          Cronograma cronograma;
+        List<Cronograma> cronogramas = new ArrayList<>();
         try(Connection conectar = conexion.obtenerConexion()){
             String consulta  = "Select * from Cronograma";
             PreparedStatement sentencia = conectar.prepareStatement(consulta);
@@ -82,7 +83,6 @@ public class CronogramaDaoImpl implements CronogramaDao{
         }finally{
             conexion.desconectar();
         }
-        cronogramas.add(cronograma);
     }
 
     @Override
@@ -98,6 +98,5 @@ public class CronogramaDaoImpl implements CronogramaDao{
         }finally{
             conexion.desconectar();
         }
-        cronogramas.remove(cronograma);
     }
 }

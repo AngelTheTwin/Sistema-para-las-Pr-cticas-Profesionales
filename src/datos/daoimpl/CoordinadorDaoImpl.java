@@ -12,6 +12,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -22,7 +23,6 @@ import java.util.logging.Logger;
  */
 public class CoordinadorDaoImpl implements CoordinadorDao{
     private final ConexionMySQL conexion;
-    private List<Coordinador> coordinadores;
     private ResultSet resultadoConsulta;
     
     public CoordinadorDaoImpl(){
@@ -32,6 +32,7 @@ public class CoordinadorDaoImpl implements CoordinadorDao{
     @Override
     public List<Coordinador> getAllCoordinadores() {
         Coordinador coordinador;
+        List<Coordinador> coordinadores = new ArrayList<>();
         try(Connection conectar = conexion.obtenerConexion()){
             String consulta  = "Select * from Coordinador";
             PreparedStatement sentencia = conectar.prepareStatement(consulta);
@@ -78,13 +79,12 @@ public class CoordinadorDaoImpl implements CoordinadorDao{
         }finally{
             conexion.desconectar();
         }
-        coordinadores.add(coordinador);
     }
 
     @Override
     public void deleteCoordinador(Coordinador coordinador) {
        try(Connection conectar = conexion.obtenerConexion()){
-            String consultaSQL = "DELETE FROM WHERE NumeroPersonalCoordinador = ?";
+            String consultaSQL = "DELETE FROM Coordinador WHERE NumeroPersonalCoordinador = ?";
             PreparedStatement sentencia = conectar.prepareStatement(consultaSQL);
             sentencia.setString(1, coordinador.getNumeroPersonalCoordinador());
             
@@ -95,14 +95,13 @@ public class CoordinadorDaoImpl implements CoordinadorDao{
         }finally{
             conexion.desconectar();
         }
-        coordinadores.remove(coordinador);
     }
 
     @Override
     public Coordinador getCoordinadorByNumEmpleado(String noEmpleado){
         Coordinador coordinador = null;
         try(Connection conectar = conexion.obtenerConexion()){
-            String consulta  = "Select * from Coordinador where noPersonal=?";
+            String consulta  = "Select * from Coordinador where numeroPersonalCoordinador=?";
             PreparedStatement sentencia = conectar.prepareStatement(consulta);
             sentencia.setString(1, noEmpleado);
             resultadoConsulta = sentencia.executeQuery();

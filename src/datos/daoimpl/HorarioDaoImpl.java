@@ -13,6 +13,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -23,7 +24,6 @@ import java.util.logging.Logger;
  */
 public class HorarioDaoImpl implements HorarioDao{
     private final ConexionMySQL conexion;
-    private List<Horario> horarios;
     private ResultSet resultadoConsulta;
 
     public HorarioDaoImpl(){
@@ -32,6 +32,7 @@ public class HorarioDaoImpl implements HorarioDao{
     @Override
     public List<Horario> getAllHorarios() {
         Horario horario;
+        List<Horario> horarios = new ArrayList<>();
         try(Connection conectar = conexion.obtenerConexion()){
             String consulta  = "Select * from Horario";
             PreparedStatement sentencia = conectar.prepareStatement(consulta);
@@ -62,7 +63,6 @@ public class HorarioDaoImpl implements HorarioDao{
         }finally{
             conexion.desconectar();
         }
-        //horarios.add(horario);
     }
     
     @Override
@@ -78,7 +78,6 @@ public class HorarioDaoImpl implements HorarioDao{
         }finally{
             conexion.desconectar();
         }
-        horarios.remove(horario);
     }
 
     @Override

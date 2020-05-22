@@ -7,7 +7,6 @@ package datos.daoimpl;
 
 import entidades.Proyecto;
 import java.util.List;
-import org.junit.Test;
 import static org.junit.Assert.*;
 
 /**
@@ -42,7 +41,7 @@ public class ProyectoDaoImplTest {
     @org.junit.Test
     public void testSaveProyecto() {
         System.out.println("saveProyecto");
-        Proyecto proyecto = null;
+        Proyecto proyecto = new Proyecto();
         proyecto.setNombreProyecto("Implementacion de IA en registros de cliente");
         proyecto.setDescripcionProyecto("Se automatizaran los registros de cliente con IA");
         proyecto.setRecursoProyecto("Laptop, internet, sistema legado");

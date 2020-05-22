@@ -14,15 +14,18 @@
             <Label fx:id="labelRegistrarCoordinador" layoutX="160.0" layoutY="5.0" text="Registrar Coordinador" />
             <Label fx:id="labelNumeroPersonal" layoutX="26.0" layoutY="81.0" text="Número de Personal:" />
             <Label fx:id="labelNombre" layoutX="26.0" layoutY="126.0" text="Nombre(s):" />
-            <Label fx:id="labelApellidoPaterno" layoutX="27.0" layoutY="184.0" text="Apellido Paterno:" />
-            <Label fx:id="labelApellidoMaterno" layoutX="25.0" layoutY="235.0" text="Apellido Materno:" />
+            <Label fx:id="labelApellidoPaterno" layoutX="27.0" layoutY="178.0" text="Apellido Paterno:" />
+            <Label fx:id="labelApellidoMaterno" layoutX="25.0" layoutY="227.0" text="Apellido Materno:" />
             <TextField fx:id="textFieldNumeroPersonal" layoutX="183.0" layoutY="77.0" prefHeight="26.0" prefWidth="116.0" />
-            <TextField fx:id="textFieldNombre" layoutX="183.0" layoutY="135.0" prefHeight="26.0" prefWidth="203.0" />
-            <TextField fx:id="textFieldApellidoPaterno" layoutX="183.0" layoutY="193.0" prefHeight="26.0" prefWidth="203.0" />
-            <TextField fx:id="textFieldApellidoMaterno" layoutX="183.0" layoutY="244.0" prefHeight="26.0" prefWidth="203.0" />
-            <Button fx:id="buttonCancelar" layoutX="290.0" layoutY="304.0" mnemonicParsing="false" onAction="#click" text="Cancelar" />
-            <Button fx:id="buttonRegistrar" layoutX="95.0" layoutY="304.0" mnemonicParsing="false" onAction="#registrarDatosCoordinador" text="Registrar" />
+            <TextField fx:id="textFieldNombre" layoutX="183.0" layoutY="122.0" prefHeight="26.0" prefWidth="203.0" />
+            <TextField fx:id="textFieldApellidoPaterno" layoutX="183.0" layoutY="173.0" prefHeight="26.0" prefWidth="203.0" />
+            <TextField fx:id="textFieldApellidoMaterno" layoutX="183.0" layoutY="222.0" prefHeight="26.0" prefWidth="203.0" />
+            <Button fx:id="buttonCancelar" layoutX="293.0" layoutY="329.0" mnemonicParsing="false" onAction="#click" text="Cancelar" />
+            <Button fx:id="buttonRegistrar" layoutX="96.0" layoutY="329.0" mnemonicParsing="false" onAction="#registrarDatosCoordinador" text="Registrar" />
             <ComboBox fx:id="comboBoxTurno" layoutX="324.0" layoutY="76.0" prefWidth="150.0" promptText="Turno" />
+            <Button layoutY="2.0" mnemonicParsing="false" text="Regresar" />
+            <Label layoutX="22.0" layoutY="276.0" text="Correo electrónico:" />
+            <TextField fx:id="textFieldCorreo" layoutX="183.0" layoutY="272.0" prefHeight="25.0" prefWidth="203.0" />
          </children>
       </Pane>
       <Button fx:id="buttonCerrarSesion" layoutX="477.0" layoutY="24.0" mnemonicParsing="false" onAction="#click" text="Cerrar Sesión" />

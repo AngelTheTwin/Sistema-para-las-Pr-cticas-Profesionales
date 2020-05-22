@@ -13,6 +13,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -22,7 +23,6 @@ import java.util.logging.Logger;
  * @author dagam
  */
 public class ReporteDaoImpl implements ReporteDao{
-    List<Reporte> reportes;
     private final ConexionMySQL conexion;
     private ResultSet resultadoConsulta;
     
@@ -33,7 +33,8 @@ public class ReporteDaoImpl implements ReporteDao{
     @Override
     public List<Reporte> getAllReportes() {
        Reporte reporte;
-       try(Connection conectar = conexion.obtenerConexion()){
+        List<Reporte> reportes = new ArrayList<>();
+        try(Connection conectar = conexion.obtenerConexion()){
             String consulta  = "Select * from Reporte";
             PreparedStatement sentencia = conectar.prepareStatement(consulta);
             resultadoConsulta = sentencia.executeQuery();
@@ -83,7 +84,6 @@ public class ReporteDaoImpl implements ReporteDao{
         }finally{
             conexion.desconectar();
         }
-        reportes.add(reporte);
     }
 
     @Override
@@ -99,6 +99,5 @@ public class ReporteDaoImpl implements ReporteDao{
         }finally{
             conexion.desconectar();
         }
-        reportes.remove(reporte);
     }
 }

@@ -100,13 +100,13 @@ public class FXML_MenuAdministradorController implements Initializable {
             
             
         
-            buttonCerrarSesion.setOnAction(new EventHandler<ActionEvent>(){
+        buttonCerrarSesion.setOnAction(new EventHandler<ActionEvent>(){
             @Override
             public void handle(ActionEvent event) {
                  try{
                     Stage stagePrincipal = (Stage) buttonCerrarSesion.getScene().getWindow();
                     stagePrincipal.close();
-                    FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/gui/vistas/FXML_MenuUsuario.fxml"));
+                    FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/gui/vistas/FXML_Login.fxml"));
                     Parent root1 = (Parent) fxmlLoader.load();
                     Stage stage = new Stage();
                     stage.setResizable(false);

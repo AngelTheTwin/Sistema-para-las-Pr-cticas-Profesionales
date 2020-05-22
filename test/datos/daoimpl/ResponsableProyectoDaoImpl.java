@@ -13,6 +13,7 @@ import java.sql.ResultSet;
 import java.util.List;
 import java.sql.Connection;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -21,7 +22,6 @@ import java.util.logging.Logger;
  * @authors dagam & Damian_Mendoza
  */
 public class ResponsableProyectoDaoImpl implements ResponsableProyectoDao{
-    List<ResponsableProyecto> responsableProyectos;
     private final ConexionMySQL conexion;
     private ResultSet resultadoConsulta;
     
@@ -31,7 +31,7 @@ public class ResponsableProyectoDaoImpl implements ResponsableProyectoDao{
 
     @Override
     public ResponsableProyecto getResponsableProyectoByIdResponsableProyecto(String idResponsableProyecto) {
-        ResponsableProyecto responsableProyecto = null;
+        ResponsableProyecto responsableProyecto = new ResponsableProyecto();
         try(Connection conectar = conexion.obtenerConexion()){
             String consulta  = "Select * from ResponsableProyecto where idResponsableRroyecto=?";
             PreparedStatement sentencia = conectar.prepareStatement(consulta);
@@ -73,7 +73,6 @@ public class ResponsableProyectoDaoImpl implements ResponsableProyectoDao{
         } catch (SQLException excepcion) {
             System.out.println("ERROR: No se han podido guardar los datos." + excepcion.getMessage());
         }
-        responsableProyectos.add(responsableProyecto);
     }
 
     @Override
@@ -90,12 +89,12 @@ public class ResponsableProyectoDaoImpl implements ResponsableProyectoDao{
         }finally{
             conexion.desconectar();
         }
-        responsableProyectos.remove(responsableProyecto);
     }
 
     @Override
     public List<ResponsableProyecto> getAllidResponsableProyectos() {
         ResponsableProyecto responsableProyecto;
+        List<ResponsableProyecto> responsablesProyecto = new ArrayList<>();
         try(Connection conectar = conexion.obtenerConexion()){
             String consulta  = "Select * from Proyecto";
             PreparedStatement sentencia = conectar.prepareStatement(consulta);
@@ -108,12 +107,11 @@ public class ResponsableProyectoDaoImpl implements ResponsableProyectoDao{
                 responsableProyecto.setApellidoMaternoResponsableProyecto(resultadoConsulta.getString("apellidoMaternoResponsableProyecto"));
                 responsableProyecto.setEmailResponsableProyecto(resultadoConsulta.getString("emailResponsableProyecto"));
                 responsableProyecto.setTelefonoResponsableProyecto(resultadoConsulta.getString("telefonoResponsableProyecto"));
-                responsableProyectos.add(responsableProyecto);
+                responsablesProyecto.add(responsableProyecto);
             }
         } catch (SQLException ex) {
             Logger.getLogger(CoordinadorDaoImpl.class.getName()).log(Level.SEVERE, null, ex);
         }
-        return responsableProyectos;
+        return responsablesProyecto;
     }
-    
 }

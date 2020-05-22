@@ -7,7 +7,6 @@ package datos.daoimpl;
 
 import entidades.Practicante;
 import java.util.List;
-import org.junit.Test;
 import static org.junit.Assert.*;
 
 /**
@@ -43,7 +42,7 @@ public class PracticanteDaoImplTest {
     @org.junit.Test
     public void testSavePracticante() {
         System.out.println("savePracticante");
-        Practicante practicante = null;
+        Practicante practicante = new Practicante();
         practicante.setMatricula("s18012133");
         practicante.setNombrePracticante("Jose Damian");
         practicante.setApellidoPaternoPracticante("Mendoza");
@@ -61,7 +60,7 @@ public class PracticanteDaoImplTest {
     @org.junit.Test
     public void testDeletePracticante() {
         System.out.println("deletePracticante");
-        Practicante practicante = null;
+        Practicante practicante = new Practicante();
         practicante.setMatricula("s18012133");
         PracticanteDaoImpl instancia = new PracticanteDaoImpl();
         instancia.deletePracticante(practicante);

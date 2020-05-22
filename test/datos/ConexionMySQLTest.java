@@ -31,6 +31,7 @@ public class ConexionMySQLTest {
     public void testDesconectar() throws SQLException {
         System.out.println("desconectar");
         Connection coneccion = conexion.obtenerConexion();
+        coneccion.close();
        assertTrue(coneccion.isClosed());
     }
     

@@ -8,7 +8,8 @@
   </information>
   <resources>
     <j2se version="1.6+" href="http://java.sun.com/products/autodl/j2se"/>
-    <jar href="SistemaParaLasPracticasProfesionalesJavaFX.jar" size="115259" download="eager" />
+    <jar href="SistemaParaLasPracticasProfesionalesJavaFX.jar" size="149348" download="eager" />
+    <jar href="lib\javax.mail.jar" size="659033" download="eager" />
     <jar href="lib\mysql-connector-java-5.1.13-bin.jar" size="753542" download="eager" />
     <jar href="lib\ojdbc6-11.jar" size="2111220" download="eager" />
   </resources>

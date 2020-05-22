@@ -7,7 +7,6 @@ package datos.daoimpl;
 
 import entidades.Profesor;
 import java.util.List;
-import org.junit.Test;
 import static org.junit.Assert.*;
 
 /**
@@ -42,7 +41,7 @@ public class ProfesorDaoImplTest {
     @org.junit.Test
     public void testSaveProfesor() {
         System.out.println("saveProfesor");
-        Profesor profesor = null;
+        Profesor profesor = new Profesor();
         profesor.setNumeroPersonalProfesor("p117");
         profesor.setNombreProfesor("Alejandro");
         profesor.setApellidoPaternoProfesor("Garcia");
@@ -59,7 +58,7 @@ public class ProfesorDaoImplTest {
     @org.junit.Test
     public void testDeleteProfesor() {
         System.out.println("deleteProfesor");
-        Profesor profesor = null;
+        Profesor profesor = new Profesor();
         profesor.setNumeroPersonalProfesor("p117");
         ProfesorDaoImpl instancia = new ProfesorDaoImpl();
         instancia.deleteProfesor(profesor);

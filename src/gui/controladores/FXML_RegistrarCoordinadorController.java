@@ -5,9 +5,7 @@
  */
 package gui.controladores;
 
-import datos.daoimpl.CoordinadorDaoImpl;
 import datos.daoimpl.UsuarioDaoImpl;
-import entidades.Coordinador;
 import entidades.Usuario;
 import java.io.IOException;
 import java.net.URL;
@@ -28,6 +26,11 @@ import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 import javax.swing.JOptionPane;
+import logica.GenerardorDeContraseña;
+import logica.Hash;
+import logica.Validaciones;
+import logica.enviarEmail;
+import static oracle.sql.NUMBER.e;
 
 /**
  * FXML Controller class
@@ -62,13 +65,15 @@ public class FXML_RegistrarCoordinadorController implements Initializable {
     private Button buttonRegistrar;
     @FXML
     private ComboBox comboBoxTurno;
+    @FXML
+    private TextField textFieldCorreo;
 
     /**
      * Initializes the controller class.
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        comboBoxTurno.getItems().addAll("Matutino", "Vespertino");
+        comboBoxTurno.getItems().addAll("Matutino", "Vespertino", "Mixto");
         
         buttonCancelar.setOnAction(new EventHandler<ActionEvent>(){
             @Override
@@ -99,26 +104,42 @@ public class FXML_RegistrarCoordinadorController implements Initializable {
         if(textFieldNumeroPersonal.getText().isEmpty() || 
                 textFieldNombre.getText().isEmpty() ||
                 textFieldApellidoPaterno.getText().isEmpty() ||
-                textFieldApellidoMaterno.getText().isEmpty()){
-             JOptionPane.showMessageDialog(null, "Favor de llenar todos los campos.");
+                textFieldApellidoMaterno.getText().isEmpty() ||
+                textFieldCorreo.getText().isEmpty()){
+            JOptionPane.showMessageDialog(null, "Favor de llenar todos los campos.");
         }else{
-            Usuario usuario = new Usuario();
-            UsuarioDaoImpl usuarioDao = new UsuarioDaoImpl();
+            Validaciones email = new Validaciones();
+            if(email.esEmail(textFieldCorreo.getText())){
+                Usuario usuario = new Usuario();
+                UsuarioDaoImpl usuarioDao = new UsuarioDaoImpl();
+                GenerardorDeContraseña contraseñaGenerada = new GenerardorDeContraseña();
+                
+                String contraseña= GenerardorDeContraseña.getPassword();
+                
+                String contraseñaHash = Hash.sha1(contraseña);
+                
+                enviarEmail.enviarEmail(contraseña, textFieldCorreo.getText());
 
-            usuario.setMatricula(textFieldNumeroPersonal.getText());
-            usuario.setNombre(textFieldNombre.getText());
-            usuario.setApellidoPaterno(textFieldApellidoPaterno.getText());
-            usuario.setApellidoMaterno(textFieldApellidoMaterno.getText());
-            usuario.setEstado("Activo");
-            usuario.setTurno((String) comboBoxTurno.getValue());
-            usuario.setTipoUsuario(2);
-            
-            this.textFieldNumeroPersonal.setText("");
-            this.textFieldNombre.setText("");
-            this.textFieldApellidoPaterno.setText("");
-            this.textFieldApellidoMaterno.setText("");
+                usuario.setMatricula(textFieldNumeroPersonal.getText());
+                usuario.setNombre(textFieldNombre.getText());
+                usuario.setApellidoPaterno(textFieldApellidoPaterno.getText());
+                usuario.setApellidoMaterno(textFieldApellidoMaterno.getText());
+                usuario.setEstado("Activo");
+                usuario.setEmail(textFieldCorreo.getText());
+                usuario.setTurno((String) comboBoxTurno.getValue());
+                usuario.setContraseña(contraseñaHash);
+                usuario.setTipoUsuario(2);
 
-            usuarioDao.saveUsuario(usuario);
+                this.textFieldNumeroPersonal.setText("");
+                this.textFieldNombre.setText("");
+                this.textFieldApellidoPaterno.setText("");
+                this.textFieldApellidoMaterno.setText("");
+                this.textFieldCorreo.setText("");
+
+                usuarioDao.saveUsuario(usuario);
+            }else{
+                JOptionPane.showMessageDialog(null, "Correo electrónico no valido");
+            }
         }    
     }    
 }

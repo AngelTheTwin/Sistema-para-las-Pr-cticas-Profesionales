@@ -7,7 +7,6 @@ package datos.daoimpl;
 
 import entidades.DescripcionActividad;
 import java.util.List;
-import org.junit.Test;
 import static org.junit.Assert.*;
 
 /**
@@ -44,7 +43,7 @@ public class DescripcionActividadDaoImplTest {
     @org.junit.Test
     public void testSaveDescripcionActividad() {
         System.out.println("saveDescripcionActividad");
-        DescripcionActividad descripcionActividad = null;
+        DescripcionActividad descripcionActividad = new DescripcionActividad();
         descripcionActividad.setIdActividad("a003");
         descripcionActividad.setTituloActividad("Entrega de tercer reporte");
         descripcionActividad.setDescripcionActividad("Se debera de entregar el archivo correspondiente al tercer reporte");
@@ -57,7 +56,7 @@ public class DescripcionActividadDaoImplTest {
     @org.junit.Test
     public void testDeleteDescripcionActividad() {
         System.out.println("deleteDescripcionActividad");
-        DescripcionActividad descripcionActividad = null;
+        DescripcionActividad descripcionActividad = new DescripcionActividad();
         descripcionActividad.setIdActividad("a003");
         DescripcionActividadDaoImpl instance = new DescripcionActividadDaoImpl();
         instance.deleteDescripcionActividad(descripcionActividad);

@@ -12,6 +12,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -21,7 +22,6 @@ import java.util.logging.Logger;
  * @authors angel & Damian_Mendoza
  */
 public class PracticanteDaoImpl implements PracticanteDao {
-    private List<Practicante> practicantes;
     private final ConexionMySQL conexion;
     private ResultSet resultadoConsulta;
     
@@ -32,6 +32,7 @@ public class PracticanteDaoImpl implements PracticanteDao {
     @Override
     public List<Practicante> getAllPracticantes() {
         Practicante practicante;
+        List<Practicante> practicantes = new ArrayList<>();
         try(Connection conectar = conexion.obtenerConexion()){
             String consulta  = "Select * from Practicante";
             PreparedStatement sentencia = conectar.prepareStatement(consulta);
@@ -110,7 +111,6 @@ public class PracticanteDaoImpl implements PracticanteDao {
         }finally{
             conexion.desconectar();
         }
-        practicantes.add(practicante);
     }
 
     @Override
@@ -127,7 +127,5 @@ public class PracticanteDaoImpl implements PracticanteDao {
         }finally{
             conexion.desconectar();
         }
-        practicantes.remove(practicante);
     }
-    
 }

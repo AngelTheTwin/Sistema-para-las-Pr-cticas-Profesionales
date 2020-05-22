@@ -14,7 +14,8 @@ import java.util.List;
  */
 public interface AutoevaluacionDao {
     List<Autoevaluacion> getAllAutoevaluaciones();
-    Autoevaluacion getAutoevaluacionByIdAutoevaluacion(String idAutoevaluacion);
+    Autoevaluacion getAutoevaluacionByIdAutoevaluacion(int idAutoevaluacion);
     void saveAutoevaluacion(Autoevaluacion autoevaluacion);
     void deleteAutoevaluacion(Autoevaluacion autoevaluacion);
 }
+

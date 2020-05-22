@@ -15,14 +15,13 @@ import java.sql.SQLException;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import javax.swing.JOptionPane;
 
 /**
  *
  * @author dagam
  */
 public class UsuarioDaoImpl implements UsuarioDao{
-        List<Usuario> usuarios;
+    List<Usuario> usuarios;
     private final ConexionMySQL conexion;
     private ResultSet resultadoConsulta;
     
@@ -46,6 +45,7 @@ public class UsuarioDaoImpl implements UsuarioDao{
                 usuario.setContraseña(resultadoConsulta.getString("contraseña"));
                 usuario.setEstado(resultadoConsulta.getString("estado"));
                 usuario.setTurno(resultadoConsulta.getString("turno"));
+                usuario.setEmail(resultadoConsulta.getString("email"));
                 usuario.setTipoUsuario(resultadoConsulta.getInt("tipoUsuario"));
                 
                 usuarios.add(usuario);
@@ -73,6 +73,7 @@ public class UsuarioDaoImpl implements UsuarioDao{
                 usuario.setContraseña(resultadoConsulta.getString("contraseña"));
                 usuario.setEstado(resultadoConsulta.getString("estado"));
                 usuario.setTurno(resultadoConsulta.getString("turno"));
+                usuario.setEmail(resultadoConsulta.getString("email"));
                 usuario.setTipoUsuario(resultadoConsulta.getInt("tipoUsuario"));
             }
         } catch (SQLException ex) {
@@ -85,7 +86,7 @@ public class UsuarioDaoImpl implements UsuarioDao{
     public void saveUsuario(Usuario usuario) {
         try(Connection conectar = conexion.obtenerConexion()){
             String consultaSQL = "INSERT INTO Usuarios (Matricula, Nombre,"
-                + "ApellidoPaterno, ApellidoMaterno, Contraseña, Estado, Turno, Tipo_Usuario)" + "VALUES(?,?,?,?,?,?,?,?)";
+                + "ApellidoPaterno, ApellidoMaterno, Contraseña, Estado, Turno, Email, Tipo_Usuario)" + "VALUES(?,?,?,?,?,?,?,?,?)";
             PreparedStatement sentencia = conectar.prepareStatement(consultaSQL);
             sentencia.setString(1, usuario.getMatricula());
             sentencia.setString(2, usuario.getNombre());
@@ -94,7 +95,8 @@ public class UsuarioDaoImpl implements UsuarioDao{
             sentencia.setString(5, usuario.getContraseña());
             sentencia.setString(6, usuario.getEstado());
             sentencia.setString(7, usuario.getTurno());
-            sentencia.setInt(8, usuario.getTipoUsuario());
+            sentencia.setString(8, usuario.getEmail());
+            sentencia.setInt(9, usuario.getTipoUsuario());
 
             sentencia.execute();
             sentencia.close();

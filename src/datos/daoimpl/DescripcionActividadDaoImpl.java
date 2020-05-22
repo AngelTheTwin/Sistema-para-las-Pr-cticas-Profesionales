@@ -13,6 +13,7 @@ import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -23,7 +24,6 @@ import java.util.logging.Logger;
  */
 public class DescripcionActividadDaoImpl implements DescripcionActividadDao{
     private final ConexionMySQL conexion;
-    private List<DescripcionActividad> descripciones;
     private ResultSet resultadoConsulta;
     
     public DescripcionActividadDaoImpl(){
@@ -33,6 +33,7 @@ public class DescripcionActividadDaoImpl implements DescripcionActividadDao{
     @Override
     public List<DescripcionActividad> getAllDescripcionesActividades() {
         DescripcionActividad descripcionActividad;
+        List<DescripcionActividad> descripciones = new ArrayList<>();
         try(Connection conectar = conexion.obtenerConexion()){
             String consulta  = "Select * from DescripcionActividad";
             PreparedStatement sentencia = conectar.prepareStatement(consulta);
@@ -91,13 +92,12 @@ public class DescripcionActividadDaoImpl implements DescripcionActividadDao{
         }finally{
             conexion.desconectar();
         }
-        descripciones.add(descripcionActividad);
     }
 
     @Override
     public void deleteDescripcionActividad(DescripcionActividad descripcionActividad) {
         try(Connection conectar = conexion.obtenerConexion()){
-            String consultaSQL = "DELETE FROM WHERE IdActividad = ?";
+            String consultaSQL = "DELETE FROM DescripcionActividad WHERE IdActividad = ?";
             PreparedStatement sentencia = conectar.prepareStatement(consultaSQL);
             sentencia.setString(1, descripcionActividad.getIdActividad());
             
@@ -109,6 +109,5 @@ public class DescripcionActividadDaoImpl implements DescripcionActividadDao{
         }finally{
             conexion.desconectar();
         }
-        descripciones.remove(descripcionActividad);
     }
 }

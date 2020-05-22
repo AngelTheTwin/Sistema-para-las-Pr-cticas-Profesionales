@@ -13,6 +13,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -23,7 +24,6 @@ import java.util.logging.Logger;
  */
 public class FormatoPresentacionDaoImpl implements FormatoPresentacionDao{
     private final ConexionMySQL conexion;
-    private List<FormatoPresentacion> formatosPresentacion;
     private ResultSet resultadoConsulta;
     
     public FormatoPresentacionDaoImpl(){
@@ -33,6 +33,7 @@ public class FormatoPresentacionDaoImpl implements FormatoPresentacionDao{
     @Override
     public List<FormatoPresentacion> getAllPresentaciones() {
         FormatoPresentacion formatoPresentacion;
+        List<FormatoPresentacion> formatosPresentacion = new ArrayList<>();
         try(Connection conectar = conexion.obtenerConexion()){
             String consulta  = "Select * from FormatoPresentacion";
             PreparedStatement sentencia = conectar.prepareStatement(consulta);
@@ -81,7 +82,6 @@ public class FormatoPresentacionDaoImpl implements FormatoPresentacionDao{
         }finally{
             conexion.desconectar();
         }
-        formatosPresentacion.add(formatoPresentacion);
     }
 
     @Override
@@ -97,6 +97,5 @@ public class FormatoPresentacionDaoImpl implements FormatoPresentacionDao{
         }finally{
             conexion.desconectar();
         }
-        formatosPresentacion.remove(formatoPresentacion);
     }
 }

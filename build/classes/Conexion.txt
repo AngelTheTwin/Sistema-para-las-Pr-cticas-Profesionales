@@ -1,0 +1,4 @@
+driver=com.mysql.jdbc.Driver
+usuario=XNL5DVl073
+contrasena=hYycaSdWgk
+url=jdbc:mysql://remotemysql.com:3306/XNL5DVl073

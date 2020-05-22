@@ -6,64 +6,96 @@
 package datos.daoimpl;
 
 import entidades.Autoevaluacion;
+import java.util.ArrayList;
 import java.util.List;
-import org.junit.jupiter.api.Test;
-import static org.junit.jupiter.api.Assertions.*;
+import org.junit.AfterClass;
+import static org.junit.Assert.*;
+import org.junit.Before;
+import org.junit.BeforeClass;
 
 /**
  *
  * @author angel
  */
 public class AutoevaluacionDaoImplTest {
+    static AutoevaluacionDaoImpl autoevaluacionDaoImpl;
+    static Autoevaluacion autoevaluacion;
+    static List<Autoevaluacion> autoevaluacionesDePrueba;
     
     public AutoevaluacionDaoImplTest() {
-        this.testGetAutoevaluacionByIdAutoevaluacion();
-        this.testGetAllAutoevaluaciones();
-        this.testSaveAutoevaluacion();
-        this.testDeleteAutoevaluacion();
     }
-
-    @Test
+    
+    @BeforeClass
+    public static void prepararEntornoDePruebas(){
+        autoevaluacionesDePrueba = new ArrayList<>();
+        
+        autoevaluacionDaoImpl = new AutoevaluacionDaoImpl();
+        autoevaluacion = new Autoevaluacion();
+        autoevaluacion.setRuta("C:/Users/angel/Downloads/Modelos_desarrollo1.pdf");
+        autoevaluacion.setIdAutoevaluacion(1);
+        autoevaluacionDaoImpl.saveAutoevaluacion(autoevaluacion);
+        autoevaluacionesDePrueba.add(autoevaluacion);
+        
+        autoevaluacionDaoImpl = new AutoevaluacionDaoImpl();
+        autoevaluacion = new Autoevaluacion();
+        autoevaluacion.setRuta("C:/Users/angel/Downloads/Cuadro Sinóptico en Blanco.pdf");
+        autoevaluacion.setIdAutoevaluacion(2);
+        autoevaluacionDaoImpl.saveAutoevaluacion(autoevaluacion);
+        autoevaluacionesDePrueba.add(autoevaluacion);
+    }
+    
+    @Before
+    public void antesDecadaPrueba(){
+        autoevaluacionDaoImpl = new AutoevaluacionDaoImpl();
+    }
+    
+    @AfterClass
+    public static void cerrarEntornoDePruebas(){
+        System.out.println("Cerrar Entorno de Pruebas");
+        autoevaluacionesDePrueba.forEach((autoevaluacionDePrueba) -> {
+        autoevaluacionDaoImpl = new AutoevaluacionDaoImpl();
+        autoevaluacionDaoImpl.deleteAutoevaluacion(autoevaluacionDePrueba);
+        });
+    }
+    
+    @org.junit.Test
     public void testGetAllAutoevaluaciones() {
-        AutoevaluacionDaoImpl autoevaluacionDaoImpl = new AutoevaluacionDaoImpl();
+        System.out.println("testGetAllEvaluaciones");
         List <Autoevaluacion> autoevaluaciones = autoevaluacionDaoImpl.getAllAutoevaluaciones();
         int resultadoEsperado = 1;
         int resultadoObtenido = autoevaluaciones.size();
-        assertEquals(resultadoEsperado, resultadoObtenido, "Prueba GetAllAutoevaluaciones ");
+        assertEquals("Prueba GetAllAutoevaluaciones", resultadoEsperado, resultadoObtenido);
     }
 
-    @Test
-    public void testGetAutoevaluacionByIdAutoevaluacion() {
-        AutoevaluacionDaoImpl autoevaluacionDaoImpl;
-        autoevaluacionDaoImpl = new AutoevaluacionDaoImpl();
-        Autoevaluacion resultadoEsperado = new Autoevaluacion();
-        resultadoEsperado.setRuta("C:/Users/angel/Downloads/6_PUDS.pdf");
-        Autoevaluacion resultadoObtenido = autoevaluacionDaoImpl.getAutoevaluacionByIdAutoevaluacion("1");
-        assertEquals(resultadoEsperado, resultadoObtenido, "Prueba getAutoevaluacionByIdAutoevaluacion");
-    }
-
-    @Test
+    @org.junit.Test
     public void testSaveAutoevaluacion() {
-        AutoevaluacionDaoImpl autoevaluacionDaoImpl = new AutoevaluacionDaoImpl();
-        Autoevaluacion autoevaluacion = new Autoevaluacion();
-        autoevaluacion.setRuta("C:/Users/angel/Downloads/6_PUDS.pdf");
+        System.out.println("testSaveEvaluacion");
         autoevaluacionDaoImpl.saveAutoevaluacion(autoevaluacion);
+        autoevaluacionDaoImpl = new AutoevaluacionDaoImpl();
         List <Autoevaluacion> autoevaluaciones = autoevaluacionDaoImpl.getAllAutoevaluaciones();
         int resultadoEsperado = 2;
         int resultadoObtenido = autoevaluaciones.size();
-        assertEquals(resultadoEsperado, resultadoObtenido, "Prueba saveAutoevaluacion ");
+        assertEquals("Prueba saveAutoevaluacion", resultadoEsperado, resultadoObtenido);
+    }
+    
+    @org.junit.Test
+    public void testGetAutoevaluacionByIdAutoevaluacion() {
+        System.out.println("testGetAutoevaluacionByIdAutoevaluacion");
+        Autoevaluacion resultadoObtenido = autoevaluacionDaoImpl.getAutoevaluacionByIdAutoevaluacion(1);
+        int resultadoEsperado = 1;
+        assertEquals("Prueba getAutoevaluacionByIdAutoevaluacion", resultadoEsperado, resultadoObtenido.getIdAutoevaluacion());
     }
 
-    @Test
+    @org.junit.Test
     public void testDeleteAutoevaluacion() {
-        AutoevaluacionDaoImpl autoevaluacionDaoImpl = new AutoevaluacionDaoImpl();
-        Autoevaluacion autoevaluacion = new Autoevaluacion();
-        autoevaluacion.setRuta("C:/Users/angel/Downloads/6_PUDS.pdf");
+        System.out.println("testDeleteAutoevaluacion");
         autoevaluacionDaoImpl.deleteAutoevaluacion(autoevaluacion);
+        System.out.println("Delete autoevaluacion" + autoevaluacion.getIdAutoevaluacion());
+        autoevaluacionDaoImpl = new AutoevaluacionDaoImpl();
         List <Autoevaluacion> autoevaluaciones = autoevaluacionDaoImpl.getAllAutoevaluaciones();
         int resultadoEsperado = 1;
         int resultadoObtenido = autoevaluaciones.size();
-        assertEquals(resultadoEsperado, resultadoObtenido, "Prueba deleteAutoevaluacion ");
+        assertEquals("Prueba deleteAutoevaluacion", resultadoEsperado, resultadoObtenido);
     }
     
 }

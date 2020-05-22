@@ -11,16 +11,19 @@
    <children>
       <Pane layoutX="26.0" layoutY="18.0" prefHeight="364.0" prefWidth="549.0">
          <children>
-            <Button fx:id="buttonRegresar" layoutX="33.0" layoutY="14.0" mnemonicParsing="false" text="Regresar" />
-            <Button fx:id="buttonRegistrar" layoutX="243.0" layoutY="303.0" mnemonicParsing="false" onAction="#seleccionarRegistrarPracticante" text="Registrar" />
-            <TextArea fx:id="textAreaMatriculaPracticante" layoutX="64.0" layoutY="76.0" prefHeight="25.0" prefWidth="156.0" promptText="Matrícula" />
-            <TextArea fx:id="textAreaNombrePracticante" layoutX="64.0" layoutY="152.0" prefHeight="38.0" prefWidth="156.0" promptText="Nombre(s)" />
-            <TextArea fx:id="textAreaApellidoPaternoPracticante" layoutX="64.0" layoutY="226.0" prefHeight="38.0" prefWidth="156.0" promptText="Apellido Paterno" />
-            <TextArea fx:id="textAreaApellidoMaternoPracticante" layoutX="320.0" layoutY="75.0" prefHeight="19.0" prefWidth="156.0" promptText="Apellido Materno" />
-            <ComboBox fx:id="comboBoxTurnoPracticante" layoutX="323.0" layoutY="140.0" prefWidth="150.0" promptText="Turno" />
-            <ComboBox fx:id="comboBoxGeneroPracticante" layoutX="323.0" layoutY="182.0" prefWidth="150.0" promptText="Genero" />
-            <ComboBox fx:id="comboBoxPeriodoPracticante" layoutX="323.0" layoutY="226.0" prefWidth="150.0" promptText="Periodo" />
+            <Button fx:id="buttonRegresar" layoutX="33.0" layoutY="14.0" mnemonicParsing="false" onAction="#regresar" text="Regresar" />
+            <Button fx:id="buttonRegistrar" layoutX="156.0" layoutY="329.0" mnemonicParsing="false" onAction="#registrar" text="Registrar" />
+            <TextArea fx:id="textAreaMatriculaPracticante" layoutX="64.0" layoutY="67.0" prefHeight="25.0" prefWidth="156.0" promptText="Matrícula" />
+            <TextArea fx:id="textAreaNombrePracticante" layoutX="64.0" layoutY="134.0" prefHeight="38.0" prefWidth="156.0" promptText="Nombre(s)" />
+            <TextArea fx:id="textAreaApellidoPaternoPracticante" layoutX="64.0" layoutY="207.0" prefHeight="38.0" prefWidth="156.0" promptText="Apellido Paterno" />
+            <TextArea fx:id="textAreaApellidoMaternoPracticante" layoutX="320.0" layoutY="66.0" prefHeight="19.0" prefWidth="156.0" promptText="Apellido Materno" />
+            <ComboBox fx:id="comboBoxTurnoPracticante" layoutX="323.0" layoutY="122.0" prefWidth="150.0" promptText="Turno" />
+            <ComboBox fx:id="comboBoxGeneroPracticante" layoutX="323.0" layoutY="170.0" prefWidth="150.0" promptText="Genero" />
+            <ComboBox fx:id="comboBoxPeriodoPracticante" layoutX="323.0" layoutY="214.0" prefWidth="150.0" promptText="Periodo" />
             <Label layoutX="220.0" layoutY="18.0" text="Registrar Practicante" />
+            <Button fx:id="buttonCerrarSesion" layoutX="448.0" layoutY="14.0" mnemonicParsing="false" text="Cerrar Sesión" />
+            <Button fx:id="buttonCancelar" layoutX="329.0" layoutY="329.0" mnemonicParsing="false" onAction="#cancelar" text="Cancelar" />
+            <TextArea fx:id="textAreaCorreo" layoutX="196.0" layoutY="269.0" prefHeight="38.0" prefWidth="156.0" promptText="Correo electrónico" />
          </children>
       </Pane>
    </children>

@@ -26,6 +26,10 @@ import javafx.scene.control.ComboBox;
 import javafx.scene.control.TextArea;
 import javafx.stage.Stage;
 import javax.swing.JOptionPane;
+import logica.GenerardorDeContraseña;
+import logica.Hash;
+import logica.Validaciones;
+import logica.enviarEmail;
 
 /**
  * FXML Controller class
@@ -52,6 +56,12 @@ public class FXML_RegistrarPracticanteController implements Initializable {
     private ComboBox comboBoxGeneroPracticante;
     @FXML
     private ComboBox comboBoxPeriodoPracticante;
+    @FXML
+    private Button buttonCerrarSesion;
+    @FXML
+    private Button buttonCancelar;
+    @FXML
+    private TextArea textAreaCorreo;
 
     /**
      * Initializes the controller class.
@@ -83,31 +93,57 @@ public class FXML_RegistrarPracticanteController implements Initializable {
     }    
 
     @FXML
-    private void seleccionarRegistrarPracticante(ActionEvent event) {
-        if(textAreaMatriculaPracticante.getText().isEmpty() || 
+    private void regresar(ActionEvent event) {
+    }
+
+    @FXML
+    private void registrar(ActionEvent event) {
+                if(textAreaMatriculaPracticante.getText().isEmpty() || 
                 textAreaNombrePracticante.getText().isEmpty() ||
                 textAreaApellidoPaternoPracticante.getText().isEmpty() ||
-                textAreaApellidoMaternoPracticante.getText().isEmpty()){
+                textAreaApellidoMaternoPracticante.getText().isEmpty() ||
+                textAreaCorreo.getText().isEmpty()){
              JOptionPane.showMessageDialog(null, "Favor de llenar todos los campos");
         }else{
-            Usuario usuario = new Usuario();
-            UsuarioDaoImpl usuarioDao = new UsuarioDaoImpl();
-
-            usuario.setMatricula(textAreaMatriculaPracticante.getText());
-            usuario.setNombre(textAreaNombrePracticante.getText());
-            usuario.setApellidoPaterno(textAreaApellidoPaternoPracticante.getText());
-            usuario.setApellidoMaterno(textAreaApellidoMaternoPracticante.getText());
-            usuario.setEstado("Activo");
-            usuario.setTurno((String) comboBoxTurnoPracticante.getValue());
-            usuario.setTipoUsuario(4);
-            
-            this.textAreaMatriculaPracticante.setText("");
-            this.textAreaNombrePracticante.setText("");
-            this.textAreaApellidoPaternoPracticante.setText("");
-            this.textAreaApellidoMaternoPracticante.setText("");
-
-            usuarioDao.saveUsuario(usuario);
+            Validaciones email = new Validaciones();
+            if(email.esEmail(textAreaCorreo.getText())){
+                Usuario usuario = new Usuario();
+                UsuarioDaoImpl usuarioDao = new UsuarioDaoImpl();
+                Practicante practicante = new Practicante();
+                PracticanteDaoImpl practicanteDao = new PracticanteDaoImpl();
+                GenerardorDeContraseña contraseñaGenerada = new GenerardorDeContraseña();
+                
+                String contraseña= GenerardorDeContraseña.getPassword();
+                
+                String contraseñaHash = Hash.sha1(contraseña);
+                
+                enviarEmail.enviarEmail(contraseña, textAreaCorreo.getText());
+                
+                usuario.setMatricula(textAreaMatriculaPracticante.getText());
+                usuario.setNombre(textAreaNombrePracticante.getText());
+                usuario.setApellidoPaterno(textAreaApellidoPaternoPracticante.getText());
+                usuario.setApellidoMaterno(textAreaApellidoMaternoPracticante.getText());
+                usuario.setEstado("Activo");
+                usuario.setContraseña(contraseñaHash);
+                usuario.setEmail(textAreaCorreo.getText());
+                usuario.setTurno((String) comboBoxTurnoPracticante.getValue());
+                usuario.setTipoUsuario(4);
+                 
+                this.textAreaMatriculaPracticante.setText("");
+                this.textAreaNombrePracticante.setText("");
+                this.textAreaApellidoPaternoPracticante.setText("");
+                this.textAreaApellidoMaternoPracticante.setText("");
+                this.textAreaCorreo.setText("");
+                
+                usuarioDao.saveUsuario(usuario);
+            }else{
+                JOptionPane.showMessageDialog(null, "Correo electrónico no valido");
+            }
         }
+    }
+
+    @FXML
+    private void cancelar(ActionEvent event) {
     }
     
 }
